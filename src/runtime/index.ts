@@ -1,38 +1,41 @@
-import { Camera, Logger, Vector3, WebGLEngine } from "@galacean/engine";
-import { loadModel, loadScene } from "../core/load";
+import * as dat from "dat.gui";
 import { OrbitControl } from "@galacean/engine-toolkit-controls";
+import { Camera, Logger, Vector3, WebGLEngine } from "@galacean/engine";
+import { loadScene, loadModel, loadParticle } from "../core";
 
-const MODEL_LIST = ["archer", "biggoblin", "dartgoblin", "elevator_columbus", "kinfegoblin", "manager", "pigman", "soldier_new"]
 
-export function createRuntime(): void {
+Logger.enable();
 
-	Logger.enable();
+const gui = new dat.GUI();
 
-	// Init Engine
-	const engine = new WebGLEngine("canvas", {
-		alpha: true
-	});
+export async function createRuntime(): Promise<void> {
 
-	// Adapter to screen
-	engine.canvas._webCanvas.addEventListener("onresize", () => {
-		engine.canvas.resizeByClientSize();
-	});
+	// create engine
+	const engine = await WebGLEngine.create({ canvas: "canvas" });
 
-	// Get root entity of current scene
+	// adapter to screen
+	engine.canvas.resizeByClientSize();
+
+	// create root entity of current scene
 	const scene = engine.sceneManager.activeScene;
-	const { background } = scene;
 	const rootEntity = scene.createRootEntity();
 
-	// Init camera
+	// create camera entity
 	const cameraEntity = rootEntity.createChild("camera");
 	cameraEntity.addComponent(Camera);
 	cameraEntity.addComponent(OrbitControl);
 	cameraEntity.transform.position = new Vector3(0, 0, 60);
 
-	// Pass engine, scene, root and camera to model
+	// load scene
+	const { background } = scene;
+	loadScene(engine, background, gui);
+
+	// load model
 	let model = "archer"
-	loadScene(engine, background)
-	loadModel(engine, rootEntity, model);
+	loadModel(engine, rootEntity, model, gui);
+
+	// load particle
+	loadParticle(engine, rootEntity);
 
 	engine.run();
 }

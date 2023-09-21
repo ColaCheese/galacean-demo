@@ -12,10 +12,9 @@
 		"patch": "standard-version -r patch --preset gitmoji-config"
 	},
 	"dependencies": {
-		"@galacean/engine": "^0.9",
-		"@galacean/engine-lottie": "1.0.0-beta.14",
-		"@galacean/engine-spine": "^0.9.1",
-		"@galacean/engine-toolkit-controls": "^0.9.0",
+		"@galacean/engine": "^1.0.1",
+		"@galacean/engine-spine": "1.0.0-beta.0",
+		"@galacean/engine-toolkit-controls": "^1.0.0",
 		"@types/dat.gui": "^0.7.10",
 		"dat.gui": "^0.7.9",
 		"vue": "^3.2.0"
