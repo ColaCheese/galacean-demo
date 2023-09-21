@@ -1,6 +1,4 @@
-import { getModelFile } from '../utils';
 import * as dat from "dat.gui";
-import { SpineAnimation } from "@galacean/engine-spine";
 import {
     Engine,
     Entity,
@@ -12,9 +10,9 @@ import {
     BackgroundMode
 } from "@galacean/engine";
 
-function addGUI(cubeMaps: TextureCube[], background: Background) {
+
+function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI) {
     
-    const gui = new dat.GUI();
     let colorGUI = null;
     let cubeMapGUI = null;
     let fitModeGUI = null;
@@ -25,6 +23,7 @@ function addGUI(cubeMaps: TextureCube[], background: Background) {
         _gui.__li.style.display = "block";
     }
     background.mode = BackgroundMode.Texture;
+    
     gui
         .add(background, "mode", {
             Sky: BackgroundMode.Sky,
@@ -90,7 +89,7 @@ function addGUI(cubeMaps: TextureCube[], background: Background) {
 }
 
 
-function loadScene(engine: Engine, background: Background): void {
+function loadScene(engine: Engine, background: Background, gui: dat.GUI): void {
 
     engine.resourceManager
         //@ts-ignore
@@ -132,28 +131,9 @@ function loadScene(engine: Engine, background: Background): void {
             return [cubeMap1, cubeMap2];
         })
         .then((cubeMaps) => {
-            addGUI(cubeMaps, background);
+            addGUI(cubeMaps, background, gui);
         });
 }
 
-function loadModel(engine: Engine, rootEntity: Entity, model: string): void {
 
-    let atlasPath = getModelFile(model, 'atlas')
-    let jsonPath = getModelFile(model, 'json')
-    let pngPath = getModelFile(model, 'png')
-
-    engine.resourceManager
-        .load({
-            urls: [jsonPath, atlasPath, pngPath],
-            type: "spine",
-        })
-        .then((spineEntity: Entity) => {
-            spineEntity.transform.setPosition(0, -15, 0);
-            rootEntity.addChild(spineEntity);
-            const spineAnimation = spineEntity.getComponent(SpineAnimation);
-            spineAnimation.state.setAnimation(0, "08_walk", true);
-            spineAnimation.scale = 0.05;
-        });
-}
-
-export { loadScene, loadModel }
+export { loadScene }

@@ -1,10 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@galacean/engine': ^0.9
-  '@galacean/engine-lottie': 1.0.0-beta.14
-  '@galacean/engine-spine': ^0.9.1
-  '@galacean/engine-toolkit-controls': ^0.9.0
+  '@galacean/engine': ^1.0.1
+  '@galacean/engine-spine': 1.0.0-beta.0
+  '@galacean/engine-toolkit-controls': ^1.0.0
   '@types/dat.gui': ^0.7.10
   '@types/node': ^20.6.0
   '@vitejs/plugin-vue': ^2.2.0
@@ -22,10 +21,9 @@ specifiers:
   vue-tsc: ^0.29.8
 
 dependencies:
-  '@galacean/engine': registry.npmmirror.com/@galacean/engine/0.9.20
-  '@galacean/engine-lottie': registry.npmmirror.com/@galacean/engine-lottie/1.0.0-beta.14_@galacean+engine@0.9.20
-  '@galacean/engine-spine': registry.npmmirror.com/@galacean/engine-spine/0.9.1_@galacean+engine@0.9.20
-  '@galacean/engine-toolkit-controls': registry.npmmirror.com/@galacean/engine-toolkit-controls/0.9.0_@galacean+engine@0.9.20
+  '@galacean/engine': registry.npmmirror.com/@galacean/engine/1.0.1
+  '@galacean/engine-spine': registry.npmmirror.com/@galacean/engine-spine/1.0.0-beta.0_@galacean+engine@1.0.1
+  '@galacean/engine-toolkit-controls': registry.npmmirror.com/@galacean/engine-toolkit-controls/1.0.0_@galacean+engine@1.0.1
   '@types/dat.gui': registry.npmmirror.com/@types/dat.gui/0.7.10
   dat.gui: registry.npmmirror.com/dat.gui/0.7.9
   vue: registry.npmmirror.com/vue/3.3.4
@@ -352,91 +350,79 @@ packages:
     dev: true
     optional: true
 
-  registry.npmmirror.com/@galacean/engine-core/0.9.20:
-    resolution: {integrity: sha512-fu5aMMdr2RYL3q7m8cRs74tkyxzE5QfkaSE9/uertCOunz8SfJcN4hkcWUVUDY5Mt5e6BPSDFb1Pak2v5QLzjA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-core/-/engine-core-0.9.20.tgz}
+  registry.npmmirror.com/@galacean/engine-core/1.0.1:
+    resolution: {integrity: sha512-NDoriXLBFvYvVc4nC99UpQBuuVf/xlaaXCU8VfV4R3nc93j5+5b9fC5MWQJ5RPezlxAiKL44LN+NbuM1UEv/EA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-core/-/engine-core-1.0.1.tgz}
     name: '@galacean/engine-core'
-    version: 0.9.20
+    version: 1.0.1
     dependencies:
-      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/0.9.20
+      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/1.0.1
     dev: false
 
-  registry.npmmirror.com/@galacean/engine-draco/0.9.20:
-    resolution: {integrity: sha512-VpTKxhN3Q9xVAl2uoxQc8Phn3VQhCKavgYMdyupmirbuosvh090KUlrgMj/wc0P1tIy52FAr9MBgqZmLHEB/+g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-draco/-/engine-draco-0.9.20.tgz}
+  registry.npmmirror.com/@galacean/engine-draco/1.0.1:
+    resolution: {integrity: sha512-lUjeEuzaqdwybtl7u9MGwXjiexIxr4K1hP4ioI9ZAOhl/7mLYUtogGlbK1pw4q6o5YN9D+rNQAGQn1+h65xf1w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-draco/-/engine-draco-1.0.1.tgz}
     name: '@galacean/engine-draco'
-    version: 0.9.20
+    version: 1.0.1
     dependencies:
-      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/0.9.20
+      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/1.0.1
     dev: false
 
-  registry.npmmirror.com/@galacean/engine-loader/0.9.20:
-    resolution: {integrity: sha512-XCk+qstZizb9Ple/bFDDe14KjWj+1umy288dWpOSDmOA6LZqlNa9oxcjgP5Ikc4Ys2GWl7falb2jYBnhPOodDQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-loader/-/engine-loader-0.9.20.tgz}
+  registry.npmmirror.com/@galacean/engine-loader/1.0.1:
+    resolution: {integrity: sha512-Lf5baOIJOLvM1iKx7ovFgG8usx/1/G7Kc7UuShMrliaV4fPgEWwMOQQqNextSXrEEeEqZD6X+Os8GCGbPHhiUA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-loader/-/engine-loader-1.0.1.tgz}
     name: '@galacean/engine-loader'
-    version: 0.9.20
+    version: 1.0.1
     dependencies:
-      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/0.9.20
-      '@galacean/engine-draco': registry.npmmirror.com/@galacean/engine-draco/0.9.20
-      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/0.9.20
-      '@galacean/engine-rhi-webgl': registry.npmmirror.com/@galacean/engine-rhi-webgl/0.9.20
+      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/1.0.1
+      '@galacean/engine-draco': registry.npmmirror.com/@galacean/engine-draco/1.0.1
+      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/1.0.1
+      '@galacean/engine-rhi-webgl': registry.npmmirror.com/@galacean/engine-rhi-webgl/1.0.1
     dev: false
 
-  registry.npmmirror.com/@galacean/engine-lottie/1.0.0-beta.14_@galacean+engine@0.9.20:
-    resolution: {integrity: sha512-CyOYQJs/BQfOHY0PqIodNlhBBa8eMoPyuuA5r3DD8h0EOyDiHDeLWh1jZzgIFykaqEQJ+Eefh5GWB+kcxnAVUg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-lottie/-/engine-lottie-1.0.0-beta.14.tgz}
-    id: registry.npmmirror.com/@galacean/engine-lottie/1.0.0-beta.14
-    name: '@galacean/engine-lottie'
-    version: 1.0.0-beta.14
+  registry.npmmirror.com/@galacean/engine-math/1.0.1:
+    resolution: {integrity: sha512-jSyI1ivmFQHI68/sRtE0cJYz7TqKdge/ya37cwZ/lOTq3lsNn+DnjifdLq36oWZ4qfQGtnAd4OwTkAdiP1heuQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-math/-/engine-math-1.0.1.tgz}
+    name: '@galacean/engine-math'
+    version: 1.0.1
+    dev: false
+
+  registry.npmmirror.com/@galacean/engine-rhi-webgl/1.0.1:
+    resolution: {integrity: sha512-zloJi6OTcQvwLT0lrueRqSOxSn0BtaAdf5M2j1edQLk4PULx6CSsXl0Y9ZiH313o2l9qQ/XcF6c8ICsVq6XuRA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-rhi-webgl/-/engine-rhi-webgl-1.0.1.tgz}
+    name: '@galacean/engine-rhi-webgl'
+    version: 1.0.1
+    dependencies:
+      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/1.0.1
+      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/1.0.1
+    dev: false
+
+  registry.npmmirror.com/@galacean/engine-spine/1.0.0-beta.0_@galacean+engine@1.0.1:
+    resolution: {integrity: sha512-l34IQjqz9LZIu6H7sBNXaf321SZtFItUjXLyHu00OP79Cyl5CmgjoKB9BuPD66r/ZAolONso+x1k+EGV7tbBsQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-spine/-/engine-spine-1.0.0-beta.0.tgz}
+    id: registry.npmmirror.com/@galacean/engine-spine/1.0.0-beta.0
+    name: '@galacean/engine-spine'
+    version: 1.0.0-beta.0
     peerDependencies:
       '@galacean/engine': '>=1.0.0'
     dependencies:
-      '@galacean/engine': registry.npmmirror.com/@galacean/engine/0.9.20
-      bezier-easing: registry.npmmirror.com/bezier-easing/2.1.0
+      '@galacean/engine': registry.npmmirror.com/@galacean/engine/1.0.1
     dev: false
 
-  registry.npmmirror.com/@galacean/engine-math/0.9.20:
-    resolution: {integrity: sha512-KRhe8ew3PoTFg6AUvxotwzWGjPLRewYyauy0uYatov4DFnpHbqdzPbcH6vp3eqBEvL6X8d3iNispaqUI9QSIdw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-math/-/engine-math-0.9.20.tgz}
-    name: '@galacean/engine-math'
-    version: 0.9.20
-    dev: false
-
-  registry.npmmirror.com/@galacean/engine-rhi-webgl/0.9.20:
-    resolution: {integrity: sha512-TzpYRIy8k4oIeaaf8ZAxtHS7KXfH4/8InwEmhsmO/7pV//SgX1aFF9NY8VuglYn0OVKL0xhiqVFvK/eGMXCM4Q==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-rhi-webgl/-/engine-rhi-webgl-0.9.20.tgz}
-    name: '@galacean/engine-rhi-webgl'
-    version: 0.9.20
-    dependencies:
-      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/0.9.20
-      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/0.9.20
-    dev: false
-
-  registry.npmmirror.com/@galacean/engine-spine/0.9.1_@galacean+engine@0.9.20:
-    resolution: {integrity: sha512-3Tm82dhjLMpAPDXvbIwIBQiV4nUOm75Hn94dXxC3Bmw/a3MdDuA/dKLg/kO7+m6hp0Ud2c89cFAWQt+TuRX9Zg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-spine/-/engine-spine-0.9.1.tgz}
-    id: registry.npmmirror.com/@galacean/engine-spine/0.9.1
-    name: '@galacean/engine-spine'
-    version: 0.9.1
-    peerDependencies:
-      '@galacean/engine': '>=0.9.0'
-    dependencies:
-      '@galacean/engine': registry.npmmirror.com/@galacean/engine/0.9.20
-    dev: false
-
-  registry.npmmirror.com/@galacean/engine-toolkit-controls/0.9.0_@galacean+engine@0.9.20:
-    resolution: {integrity: sha512-lnLMlCNv93WeJWJJlAc+CoiLt7VgJXeCRzaap0SWoNIORmI57bnADFujwec1v+wnTMbmGIw+MbIZwImktMhqeQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-toolkit-controls/-/engine-toolkit-controls-0.9.0.tgz}
-    id: registry.npmmirror.com/@galacean/engine-toolkit-controls/0.9.0
+  registry.npmmirror.com/@galacean/engine-toolkit-controls/1.0.0_@galacean+engine@1.0.1:
+    resolution: {integrity: sha512-p9uHLcuRkCYrKC2UiQcSsBKTqnkkPrMtIBwjz/zfw4wb1xehssKusjpowkySd9U/wvv7gvP/UNp4uj4i0vmfUA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine-toolkit-controls/-/engine-toolkit-controls-1.0.0.tgz}
+    id: registry.npmmirror.com/@galacean/engine-toolkit-controls/1.0.0
     name: '@galacean/engine-toolkit-controls'
-    version: 0.9.0
+    version: 1.0.0
     peerDependencies:
-      '@galacean/engine': ^0.9.0-alpha
+      '@galacean/engine': ^1.0.0-alpha
     dependencies:
-      '@galacean/engine': registry.npmmirror.com/@galacean/engine/0.9.20
+      '@galacean/engine': registry.npmmirror.com/@galacean/engine/1.0.1
     dev: false
 
-  registry.npmmirror.com/@galacean/engine/0.9.20:
-    resolution: {integrity: sha512-UzPdnVFtEs6MaOH97adQSnGyMcXpR//nKpQbNoKu+i0DwrtH95tbT/NRr09/bKfPX+gFKbiagWv3VokcgE/Atg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine/-/engine-0.9.20.tgz}
+  registry.npmmirror.com/@galacean/engine/1.0.1:
+    resolution: {integrity: sha512-6rrrLTsqzdd/Z51EFUiswAcoA3+gROfeKW1+N3Zb2izeVH40SmmyCNDoS8zV8Mt2RP9xprct1ay5/6+LqH+ClA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@galacean/engine/-/engine-1.0.1.tgz}
     name: '@galacean/engine'
-    version: 0.9.20
+    version: 1.0.1
     dependencies:
-      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/0.9.20
-      '@galacean/engine-loader': registry.npmmirror.com/@galacean/engine-loader/0.9.20
-      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/0.9.20
-      '@galacean/engine-rhi-webgl': registry.npmmirror.com/@galacean/engine-rhi-webgl/0.9.20
+      '@galacean/engine-core': registry.npmmirror.com/@galacean/engine-core/1.0.1
+      '@galacean/engine-loader': registry.npmmirror.com/@galacean/engine-loader/1.0.1
+      '@galacean/engine-math': registry.npmmirror.com/@galacean/engine-math/1.0.1
+      '@galacean/engine-rhi-webgl': registry.npmmirror.com/@galacean/engine-rhi-webgl/1.0.1
     dev: false
 
   registry.npmmirror.com/@gitmoji/commit-types/1.1.5:
@@ -880,12 +866,6 @@ packages:
     name: base64-js
     version: 1.5.1
     dev: true
-
-  registry.npmmirror.com/bezier-easing/2.1.0:
-    resolution: {integrity: sha512-gbIqZ/eslnUFC1tjEvtz0sgx+xTK20wDnYMIA27VA04R7w6xxXQPZDbibjA9DTWZRA2CXtwHykkVzlCaAJAZig==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/bezier-easing/-/bezier-easing-2.1.0.tgz}
-    name: bezier-easing
-    version: 2.1.0
-    dev: false
 
   registry.npmmirror.com/bl/4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/bl/-/bl-4.1.0.tgz}
