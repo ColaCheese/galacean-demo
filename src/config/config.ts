@@ -1,5 +1,8 @@
-const modelList = [
-    "archer", "biggoblin", "dartgoblin", "kinfegoblin", "columbus", "manager", "pigman", "soldier"
-]
+// record skin and action names of a model
+const modelEntity = {
+    skinList: [],
+    actionList: [],
+}
 
-export default modelList
+export { modelEntity }
+
