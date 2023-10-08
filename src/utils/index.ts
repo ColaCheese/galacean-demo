@@ -1,12 +1,8 @@
-// export * from './userPermission';
-// export * from './time';
+import readFile from "./read-file";
+import getModelFileUrl from "./url";
 
-// Get static model resources
-export const getModelFileUrl = (modelName: string, fileType: string) => {
 
-    return new URL(`../models/${modelName}/${modelName}.${fileType}`, import.meta.url).href;
-};
-
-export default {
-    getModelFileUrl,
-};
+export {
+    readFile,
+    getModelFileUrl
+}
