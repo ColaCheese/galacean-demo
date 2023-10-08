@@ -34,7 +34,7 @@ function loadModel(engine: Engine, rootEntity: Entity, model: string, gui: dat.G
     let pngPath = getModelFileUrl(model, 'png');
     let modelJson = readFile(model, 'json');
 
-    let skinList = modelJson.skins.map((skin: any) => skin.name);
+    let skinList = modelJson.skins.map((skin: any) => skin.name).slice(1);
     let actionList = Object.keys(modelJson.animations);
     modelEntity.skinList = skinList;
     modelEntity.actionList = actionList;
