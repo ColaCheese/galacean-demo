@@ -12,16 +12,16 @@
 		"patch": "standard-version -r patch --preset gitmoji-config"
 	},
 	"dependencies": {
-		"@galacean/engine": "^1.0.1",
+		"@galacean/engine": "^1.0.4",
 		"@galacean/engine-spine": "1.0.0-beta.0",
 		"@galacean/engine-toolkit-controls": "^1.0.0",
 		"@types/dat.gui": "^0.7.10",
 		"dat.gui": "^0.7.9",
-		"vue": "^3.2.0"
+		"vue": "^3.3.4"
 	},
 	"devDependencies": {
 		"@types/node": "^20.6.0",
-		"@vitejs/plugin-vue": "^2.2.0",
+		"@vitejs/plugin-vue": "^2.3.4",
 		"commitizen": "^4.3.0",
 		"commitlint": "^17.7.1",
 		"commitlint-config-gitmoji": "^2.3.1",
@@ -29,8 +29,8 @@
 		"cz-custom": "^0.0.2",
 		"husky": "^8.0.3",
 		"standard-version": "^9.5.0",
-		"typescript": "^4.1.3",
-		"vite": "^2",
+		"typescript": "^4.9.5",
+		"vite": "^2.9.16",
 		"vue-tsc": "^0.29.8"
 	},
 	"config": {

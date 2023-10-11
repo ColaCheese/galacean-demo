@@ -1,7 +1,7 @@
 import * as dat from "dat.gui";
 import { OrbitControl } from "@galacean/engine-toolkit-controls";
 import { Camera, Logger, Vector3, WebGLEngine } from "@galacean/engine";
-import { loadScene, loadModel, loadParticle } from "../core";
+import { Model, loadScene, loadParticle } from "../core";
 
 
 Logger.enable();
@@ -26,13 +26,13 @@ export async function createRuntime(): Promise<void> {
 	cameraEntity.addComponent(OrbitControl);
 	cameraEntity.transform.position = new Vector3(0, 0, 60);
 
+	// load model
+	const model = new Model(engine, rootEntity);
+	model.modelSelectGui();
+
 	// load scene
 	const { background } = scene;
 	loadScene(engine, background, gui);
-
-	// load model
-	let model = "archer"
-	loadModel(engine, rootEntity, model, gui);
 
 	// load particle
 	loadParticle(engine, rootEntity);
