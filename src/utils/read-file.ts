@@ -1,33 +1,35 @@
 import getModelFileUrl from "./url";
 
+
 // read file according to file type, default is json
 function readFile(file: string, type: string = "json"): any {
 
-    let fileContext = loadFile(file, type);
+    let url = getModelFileUrl(file, type);
+    let context = loadFile(url);
 
-    if (fileContext === null) {
+    if (context === null) {
         return null;
     } else{
         switch (type) {
             case "json":
-                return JSON.parse(fileContext);
+                return JSON.parse(context);
             case "text":
-                return fileContext;
+                return context;
             default:
                 return null;
         }
     }
 }
 
-// use XMLHttpRequest to load file
-function loadFile(name: string, type: string): string | null {
+// use XMLHttpRequest to load local resource as a text file
+function loadFile(url: string): string | null {
 
     const xhr = new XMLHttpRequest();
     const okStatus = document.location.protocol === "file:" ? 0 : 200;
-    const url = getModelFileUrl(name, type);
     xhr.open('GET', url, false);
     xhr.overrideMimeType("text/html; charset=utf-8");
     xhr.send(null);
+
     return xhr.status === okStatus ? xhr.responseText : null;
 }
 
