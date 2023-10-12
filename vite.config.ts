@@ -40,7 +40,8 @@ export default defineConfig({
 				"@galacean/engine-toolkit-controls",
 				"@types/dat.gui",
 				"dat.gui",
-				"vue"
+				"vue",
+				/assets/
 			],
 			output: {
 				globals: { // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
