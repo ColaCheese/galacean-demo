@@ -1,6 +1,5 @@
 import * as dat from "dat.gui";
-import { getModelFileUrl, readDir, readFile } from "../utils";
-import { modelPathMap } from "../config/model-config";
+import { getModelFileUrl, readFile } from "../utils";
 import { SpineAnimation } from "@galacean/engine-spine";
 import { Engine, Entity } from "@galacean/engine";
 
@@ -10,18 +9,29 @@ class Model {
     private engine: Engine;
     private rootEntity: Entity;
     private spineEntity: Entity;
+    private path: string;
+    private modelList: string[];
+    private model: string;
     private gui: dat.GUI;
     private guiMap: { name: string; skin: string; action: string; };
     private skinController: any;
     private actionController: any;
-    private modelList: string[];
-    private model: string;
 
-    public constructor(_engine: Engine, _rootEntity: Entity) {
+
+    public constructor(_engine: Engine, _rootEntity: Entity, _path: string, _modelList: string[]) {
 
         // inilitize the model engine and root entity
         this.engine = _engine;
         this.rootEntity = _rootEntity;
+
+        // the relative path of static files
+        this.path = _path;
+
+        // get all the model names through read directory
+        this.modelList = _modelList;
+        
+        // initlize the model to the first of model list
+        this.model = this.modelList[0];
 
         // initlize the gui
         this.gui = new dat.GUI({
@@ -36,12 +46,6 @@ class Model {
             action: ""
         };
 
-        // get all the model names through read directory
-        this.modelList = readDir(modelPathMap);
-        
-        // initlize the model to the first of model list
-        this.model = this.modelList[0];
-
         // other initlization
         this.spineEntity  = new Entity(this.engine, undefined)
         this.skinController = null;
@@ -51,9 +55,9 @@ class Model {
     // the core function to load model through its name
     public loadModelByName(model: string): void {
 
-        let atlasPath = getModelFileUrl(model, 'atlas');
-        let jsonPath = getModelFileUrl(model, 'json');
-        let pngPath = getModelFileUrl(model, 'png');
+        let atlasPath = getModelFileUrl(this.path, model, 'atlas');
+        let jsonPath = getModelFileUrl(this.path, model, 'json');
+        let pngPath = getModelFileUrl(this.path, model, 'png');
 
         this.engine.resourceManager
             .load({
