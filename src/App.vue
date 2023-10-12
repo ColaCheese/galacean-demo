@@ -4,7 +4,7 @@ import { createRuntime } from "./runtime";
 
 
 onMounted(() => {
-  createRuntime();
+  createRuntime("canvas");
 })
 </script>
 

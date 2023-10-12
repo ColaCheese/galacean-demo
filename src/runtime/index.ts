@@ -8,10 +8,10 @@ Logger.enable();
 
 const gui = new dat.GUI();
 
-export async function createRuntime(): Promise<void> {
+export async function createRuntime(canvas: string = "canvas"): Promise<void> {
 
 	// create engine
-	const engine = await WebGLEngine.create({ canvas: "canvas" });
+	const engine = await WebGLEngine.create({ canvas: canvas });
 
 	// adapter to screen
 	engine.canvas.resizeByClientSize();

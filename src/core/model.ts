@@ -38,7 +38,7 @@ class Model {
 
         // get all the model names through read directory
         this.modelList = readDir(modelPathMap);
-
+        
         // initlize the model to the first of model list
         this.model = this.modelList[0];
 
