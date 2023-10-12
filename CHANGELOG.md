@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.5 (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* **whole**: Adjust the static resource dir in dist dir ([6e8a564](https://github.com/ColaCheese/galacean-demo/commit/6e8a564))
+
+
+
+
+
 ## 0.2.4 (2023-10-12)
 
 
