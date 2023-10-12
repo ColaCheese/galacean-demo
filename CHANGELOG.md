@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.1 (2023-10-12)
+
+
+### 🎫 Chores
+
+* **whole**: Add package publish script ([0a00ff5](https://github.com/ColaCheese/galacean-demo/commit/0a00ff5))
+
+
+### 🐛 Bug Fixes
+
+* **model**: Fix the errors related to source path ([bf04275](https://github.com/ColaCheese/galacean-demo/commit/bf04275))
+
+
+
+
+
 # 0.2.0 (2023-10-12)
 
 
