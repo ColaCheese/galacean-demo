@@ -3,7 +3,7 @@ function readDir(pathMap: Record<string, () => Promise<{ [key: string]: any; }>>
 
     // search all the dirs contain flag files in a certain path
     let modelList = Object.keys(pathMap).map((path: string) => {
-        return path.split("/")[2]
+        return path.split("/")[3]
     })
 
     return modelList;

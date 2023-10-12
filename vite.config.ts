@@ -5,7 +5,6 @@ import vue from "@vitejs/plugin-vue"
 import path from "path"
 
 
-
 export default defineConfig({
 	publicDir: false, // 不复制 public 文件夹到 dist
 	plugins: [
