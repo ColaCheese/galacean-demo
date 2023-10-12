@@ -1,7 +1,7 @@
 {
 	"name": "galacean-demo",
 	"private": false,
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"description": "The demo of galacean engine",
 	"keywords": [
 		"galacean",
@@ -20,7 +20,7 @@
 			"require": "./dist/galacean-demo.umd.js"
 		}
 	},
-	"homepage": "https://github.com/ColaCheese/galacean-demo/",
+	"homepage": "https://github.com/ColaCheese/galacean-demo",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ColaCheese/galacean-demo.git"
