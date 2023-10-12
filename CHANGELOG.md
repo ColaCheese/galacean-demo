@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.6 (2023-10-12)
+
+
+### 🎫 Chores
+
+* **whole**: Remove static files from package to avoid path do not same ([6b0955a](https://github.com/ColaCheese/galacean-demo/commit/6b0955a))
+
+
+
+
+
 ## 0.2.5 (2023-10-12)
 
 
