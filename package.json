@@ -1,7 +1,7 @@
 {
 	"name": "galacean-demo",
 	"private": false,
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "The demo of galacean engine",
 	"keywords": [
 		"galacean",
@@ -35,9 +35,9 @@
 		"build": "pnpm run clean && vite build",
 		"serve": "vite preview",
 		"commit": "git-cz",
-		"major": "standard-version --release-as major --preset gitmoji-config",
-		"minor": "standard-version --release-as minor --preset gitmoji-config",
-		"patch": "standard-version --release-as patch --preset gitmoji-config",
+		"release-major": "standard-version -r major --preset gitmoji-config",
+		"release-minor": "standard-version -r minor --preset gitmoji-config",
+		"release-patch": "standard-version -r patch --preset gitmoji-config",
 		"publish": "git push --follow-tags origin develop && npm publish"
 	},
 	"dependencies": {

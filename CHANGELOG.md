@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.2 (2023-10-12)
+
+
+### 🎫 Chores
+
+* **whole**: Change the version release script ([d696ac9](https://github.com/ColaCheese/galacean-demo/commit/d696ac9))
+
+
+
+
+
 ## 0.2.1 (2023-10-12)
 
 
