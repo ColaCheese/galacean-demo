@@ -16,7 +16,7 @@ export default defineConfig({
 			filename: "stats.html", // 分析图生成的文件名
 		}),
 		copy({
-			targets: [{ src: "src/assets/models", dest: "dist" }] // 执行静态资源拷贝
+			targets: [{ src: "src/assets", dest: "dist" }] // 执行静态资源拷贝
 		})
 	],
 	build: {
