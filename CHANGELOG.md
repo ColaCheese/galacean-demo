@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.7 (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* **model**: Fix readfile function to load json file ([1da0bbc](https://github.com/ColaCheese/galacean-demo/commit/1da0bbc))
+
+
+
+
+
 ## 0.2.6 (2023-10-12)
 
 
