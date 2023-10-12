@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.4 (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* **whole**: Avoid pack static files under assets dir ([bd6304b](https://github.com/ColaCheese/galacean-demo/commit/bd6304b))
+
+
+
+
+
 ## 0.2.3 (2023-10-12)
 
 
