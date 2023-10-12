@@ -35,9 +35,9 @@
 		"build": "pnpm run clean && vite build",
 		"serve": "vite preview",
 		"commit": "git-cz",
-		"major": "standard-version -r major --preset gitmoji-config",
-		"minor": "standard-version -r minor --preset gitmoji-config",
-		"patch": "standard-version -r patch --preset gitmoji-config",
+		"major": "standard-version --release-as major --preset gitmoji-config",
+		"minor": "standard-version --release-as minor --preset gitmoji-config",
+		"patch": "standard-version --release-as patch --preset gitmoji-config",
 		"publish": "git push --follow-tags origin develop && npm publish"
 	},
 	"dependencies": {
