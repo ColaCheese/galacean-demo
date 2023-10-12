@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# 0.2.0 (2023-10-12)
+
+
+### 🎫 Chores
+
+* **whole**: Add build config file and npm publish settings ([a560d33](https://github.com/ColaCheese/galacean-demo/commit/a560d33))
+
+
+### 📝 Documentation
+
+* **whole**: Update stats.html ([5ac3842](https://github.com/ColaCheese/galacean-demo/commit/5ac3842))
+
+
+
+
+
 # 0.1.0 (2023-10-12)
 
 
