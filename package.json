@@ -37,7 +37,8 @@
 		"commit": "git-cz",
 		"major": "standard-version -r major --preset gitmoji-config",
 		"minor": "standard-version -r minor --preset gitmoji-config",
-		"patch": "standard-version -r patch --preset gitmoji-config"
+		"patch": "standard-version -r patch --preset gitmoji-config",
+		"publish": "git push --follow-tags origin develop && npm publish"
 	},
 	"dependencies": {
 		"@galacean/engine": "^1.0.4",
