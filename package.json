@@ -11,15 +11,24 @@
 	"files": [
 		"dist"
 	],
-	"main": "./dist/nf-tool.umd.js",
-	"module": "./dist/nf-tool.es.js",
+	"main": "dist/galacean-demo.es.js",
+	"module": "dist/galacean-demo.es.js",
+	"unpkg": "dist/galacean-demo.umd.js",
 	"exports": {
 		".": {
-			"import": "./dist/nf-tool.es.js",
-			"require": "./dist/nf-tool.umd.js"
+			"import": "./dist/galacean-demo.es.js",
+			"require": "./dist/galacean-demo.umd.js"
 		}
 	},
-	"auther": "jin yang (jyk). Email: jyk0013@163.com",
+	"homepage": "https://github.com/ColaCheese/galacean-demo/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ColaCheese/galacean-demo.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ColaCheese/galacean-demo/issues"
+	},
+	"auther": "colacheese (https://github.com/ColaCheese)",
 	"scripts": {
 		"dev": "vite",
 		"clean": "rm -rf dist",
