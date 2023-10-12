@@ -1,7 +1,7 @@
 {
 	"name": "galacean-demo",
 	"private": false,
-	"version": "0.2.4",
+	"version": "0.2.6",
 	"description": "The demo of galacean engine",
 	"keywords": [
 		"galacean",

@@ -1,6 +1,6 @@
 // get static model resources
-function getModelFileUrl(modelName: string, fileType: string): string {
-    return new URL(`../assets/models/${modelName}/${modelName}.${fileType}`, import.meta.url).href;
+function getModelFileUrl(path: string, modelName: string, fileType: string): string {
+    return `${path}models/${modelName}/${modelName}.${fileType}`;
 }
 
 

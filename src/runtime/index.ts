@@ -8,7 +8,10 @@ Logger.enable();
 
 const gui = new dat.GUI();
 
-export async function createRuntime(canvas: string = "canvas"): Promise<void> {
+// path: static files relative path (root),
+// modelList: model name list,
+// canvas: canvas id
+export async function createRuntime(canvas: string = "canvas", path: string, modelList: string[]): Promise<void> {
 
 	// create engine
 	const engine = await WebGLEngine.create({ canvas: canvas });
@@ -27,7 +30,7 @@ export async function createRuntime(canvas: string = "canvas"): Promise<void> {
 	cameraEntity.transform.position = new Vector3(0, 0, 60);
 
 	// load model
-	const model = new Model(engine, rootEntity);
+	const model = new Model(engine, rootEntity, path, modelList);
 	model.modelSelectGui();
 
 	// load scene
