@@ -2,9 +2,10 @@ import getModelFileUrl from "./url";
 
 
 // read file according to file type, default is json
-function readFile(file: string, type: string = "json"): any {
+function readFile(path: string, file: string, type: string = "json"): any {
 
-    let url = getModelFileUrl(file, type);
+    let url = getModelFileUrl(path, file, type);
+
     let context = loadFile(url);
 
     if (context === null) {

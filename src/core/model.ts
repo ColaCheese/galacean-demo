@@ -99,7 +99,7 @@ class Model {
     // load model resource such as skin and action
     public loadModelResource(model: string): { skinList: any, actionList: string[] }{
 
-        let modelJson = readFile(model, 'json');
+        let modelJson = readFile(this.path, model, "json");
         let skinList = modelJson.skins.map((skin: any) => skin.name).slice(1);
         let actionList = Object.keys(modelJson.animations);
 
