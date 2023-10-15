@@ -4,7 +4,20 @@ import { createRuntime } from "./runtime";
 
 
 onMounted(() => {
-  createRuntime();
+  createRuntime(
+    "canvas",
+    "./src/assets/",
+    [
+      "archer",
+      "biggoblin",
+      "columbus",
+      "kinfegoblin",
+      "manager",
+      "pigman",
+      "soldier",
+      "test"
+    ]
+  );
 })
 </script>
 

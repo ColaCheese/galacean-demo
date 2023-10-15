@@ -1,7 +1,7 @@
 {
 	"name": "galacean-demo",
 	"private": false,
-	"version": "0.2.0",
+	"version": "0.2.7",
 	"description": "The demo of galacean engine",
 	"keywords": [
 		"galacean",
@@ -20,7 +20,7 @@
 			"require": "./dist/galacean-demo.umd.js"
 		}
 	},
-	"homepage": "https://github.com/ColaCheese/galacean-demo/",
+	"homepage": "https://github.com/ColaCheese/galacean-demo",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ColaCheese/galacean-demo.git"
@@ -35,9 +35,10 @@
 		"build": "pnpm run clean && vite build",
 		"serve": "vite preview",
 		"commit": "git-cz",
-		"major": "standard-version -r major --preset gitmoji-config",
-		"minor": "standard-version -r minor --preset gitmoji-config",
-		"patch": "standard-version -r patch --preset gitmoji-config"
+		"release-major": "standard-version -r major --preset gitmoji-config",
+		"release-minor": "standard-version -r minor --preset gitmoji-config",
+		"release-patch": "standard-version -r patch --preset gitmoji-config",
+		"release": "git push --follow-tags origin develop && npm publish"
 	},
 	"dependencies": {
 		"@galacean/engine": "^1.0.4",

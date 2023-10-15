@@ -5,7 +5,6 @@ import vue from "@vitejs/plugin-vue"
 import path from "path"
 
 
-
 export default defineConfig({
 	publicDir: false, // 不复制 public 文件夹到 dist
 	plugins: [
@@ -16,9 +15,9 @@ export default defineConfig({
 			brotliSize: true, // 收集 brotli 大小并将其显示
 			filename: "stats.html", // 分析图生成的文件名
 		}),
-		copy({
-			targets: [{ src: "src/assets/models", dest: "dist" }] // 执行静态资源拷贝
-		})
+		// copy({
+		// 	targets: [{ src: "src/assets", dest: "dist" }] // 执行静态资源拷贝
+		// })
 	],
 	build: {
 		outDir: "dist",
@@ -41,7 +40,8 @@ export default defineConfig({
 				"@galacean/engine-toolkit-controls",
 				"@types/dat.gui",
 				"dat.gui",
-				"vue"
+				"vue",
+				// /assets/
 			],
 			output: {
 				globals: { // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
