@@ -11,7 +11,7 @@ import {
 } from "@galacean/engine";
 
 
-function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI) {
+function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI, skyMaterial: SkyBoxMaterial) {
     
     let colorGUI = null;
     let cubeMapGUI = null;
@@ -29,7 +29,7 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI) {
             Sky: BackgroundMode.Sky,
             SolidColor: BackgroundMode.SolidColor,
             Texture: BackgroundMode.Texture,
-        })
+        }).name("背景类型")
         .onChange((v) => {
             const mode = (background.mode = parseInt(v));
             hide(colorGUI);
@@ -51,14 +51,14 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI) {
     const solidColor = background.solidColor;
     let colorObj = {
         color: [
-            solidColor.r / 255,
-            solidColor.g / 255,
-            solidColor.b / 255,
+            solidColor.r,
+            solidColor.g,
+            solidColor.b,
             solidColor.a,
         ],
     };
-    colorGUI = gui.addColor(colorObj, "color").onChange((v) => {
-        background.solidColor.set(v[0] / 255, v[1] / 255, v[2] / 255, v[3] / 255);
+    colorGUI = gui.addColor(colorObj, "color").name("颜色").onChange((v) => {
+        background.solidColor.set(v[0] / 255, v[1] / 255, v[2] / 255, v[3]);
     });
 
     const obj = {
@@ -70,13 +70,20 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI) {
     };
 
     cubeMapGUI = gui
-        .add(obj, "cubeMap", { cubeMap1: 0, cubeMap2: 1 })
+        .add(obj, "cubeMap", { cubeMap1: 0, cubeMap2: 1, cubeMap3: 2})
+        .name("立方体纹理")
         .onChange((v) => {
+            if(parseInt(v)===2) {
+                skyMaterial.textureDecodeRGBM = true; // HDR
+            } else {
+                skyMaterial.textureDecodeRGBM = false;
+            }
             // @ts-ignore
-            background.sky.material.textureCubeMap = cubeMaps[parseInt(v)];
+            background.sky.material.texture = cubeMaps[parseInt(v)];
         });
     fitModeGUI = gui
         .add(mode, "fitMode", { AspectFitWidth: 0, AspectFitHeight: 1, Fill: 2 })
+        .name("纹理适配模式")
         .onChange((v) => {
             background.textureFillMode = parseInt(v);
         });
@@ -89,49 +96,59 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI) {
 }
 
 
+function getSceneFileUrl(modelName: string, fileName: string, fileType: string): string {
+    return new URL(`../sceneModels/${modelName}/${fileName}.${fileType}`, import.meta.url).href;
+}
+
+
 function loadScene(engine: Engine, background: Background, gui: dat.GUI): void {
 
+    const skyMaterial = (background.sky.material = new SkyBoxMaterial(engine)); // 添加天空盒材质
     engine.resourceManager
         //@ts-ignore
-        .load<[TextureCube, TextureCube, Texture2D]>([
+        .load<[TextureCube, TextureCube, TextureCube, Texture2D]>([
             {
                 urls: [
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*5w6_Rr6ML6IAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*TiT2TbN5cG4AAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*8GF6Q4LZefUAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*D5pdRqUHC3IAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*_FooTIp6pNIAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*CYGZR7ogZfoAAAAAAAAAAAAAARQnAQ",
+                    getSceneFileUrl('TextureCube', '1', 'jpeg'),
+                    getSceneFileUrl('TextureCube', '2', 'jpeg'),
+                    getSceneFileUrl('TextureCube', '3', 'jpeg'),
+                    getSceneFileUrl('TextureCube', '4', 'jpeg'),
+                    getSceneFileUrl('TextureCube', '5', 'jpeg'),
+                    getSceneFileUrl('TextureCube', '6', 'jpeg'),
                 ],
                 type: AssetType.TextureCube,
             },
             {
                 urls: [
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*Bk5FQKGOir4AAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*_cPhR7JMDjkAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*trqjQp1nOMQAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*_RXwRqwMK3EAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*q4Q6TroyuXcAAAAAAAAAAAAAARQnAQ",
-                    "https://gw.alipayobjects.com/mdn/rms_7c464e/afts/img/A*DP5QTbTSAYgAAAAAAAAAAAAAARQnAQ",
+                    getSceneFileUrl('TextureCube2', '1', 'jpeg'),
+                    getSceneFileUrl('TextureCube2', '2', 'jpeg'),
+                    getSceneFileUrl('TextureCube2', '3', 'jpeg'),
+                    getSceneFileUrl('TextureCube2', '4', 'jpeg'),
+                    getSceneFileUrl('TextureCube2', '5', 'jpeg'),
+                    getSceneFileUrl('TextureCube2', '6', 'jpeg'),
                 ],
                 type: AssetType.TextureCube,
             },
             {
-                url: "https://gw.alipayobjects.com/mdn/rms_2e421e/afts/img/A*BcWiRYM7hroAAAAAAAAAAAAAARQnAQ",
+                url: getSceneFileUrl('TextureCube3', 'hdr', 'bin'),
+                type: AssetType.HDR,
+            },
+            {
+                url: getSceneFileUrl('Texture2D', 'Texture2D', 'png'),
                 type: AssetType.Texture2D,
             },
         ])
-        .then(([cubeMap1, cubeMap2, texture]) => {
+        .then(([cubeMap1, cubeMap2, cubeMap3, texture]) => {
             // 添加天空盒背景
             // background.mode = BackgroundMode.Sky; // 默认纯色背景
-            const skyMaterial = (background.sky.material = new SkyBoxMaterial(engine)); // 添加天空盒材质
-            skyMaterial.textureCubeMap = cubeMap1; // 设置立方体纹理
+            // const skyMaterial = (background.sky.material = new SkyBoxMaterial(engine)); // 添加天空盒材质
+            skyMaterial.texture = cubeMap1; // 设置立方体纹理
             background.sky.mesh = PrimitiveMesh.createCuboid(engine, 2, 2, 2); // 设置天空盒网格
             background.texture = texture;
-            return [cubeMap1, cubeMap2];
+            return [cubeMap1, cubeMap2, cubeMap3];
         })
         .then((cubeMaps) => {
-            addGUI(cubeMaps, background, gui);
+            addGUI(cubeMaps, background, gui, skyMaterial);
         });
 }
 
