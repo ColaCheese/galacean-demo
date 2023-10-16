@@ -14,6 +14,7 @@ import {
 function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI, skyMaterial: SkyBoxMaterial) {
     
     let colorGUI = null;
+    let colorGUI2 = null;
     let cubeMapGUI = null;
     let fitModeGUI = null;
     function hide(_gui) {
@@ -33,6 +34,7 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI, s
         .onChange((v) => {
             const mode = (background.mode = parseInt(v));
             hide(colorGUI);
+            hide(colorGUI2);
             hide(cubeMapGUI);
             hide(fitModeGUI);
             switch (mode) {
@@ -41,6 +43,7 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI, s
                     break;
                 case BackgroundMode.SolidColor:
                     show(colorGUI);
+                    show(colorGUI2);
                     break;
                 case BackgroundMode.Texture:
                     show(fitModeGUI);
@@ -54,11 +57,15 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI, s
             solidColor.r,
             solidColor.g,
             solidColor.b,
-            solidColor.a,
         ],
     };
     colorGUI = gui.addColor(colorObj, "color").name("颜色").onChange((v) => {
-        background.solidColor.set(v[0] / 255, v[1] / 255, v[2] / 255, v[3]);
+        background.solidColor.set(v[0] / 255, v[1] / 255, v[2] / 255, color.a);
+    });
+    let color = {a: 1};
+    colorGUI2 = gui.add(color, "a", 0, 1).name("透明度").onChange((v2) => {
+        color.a = v2;
+        background.solidColor.set(colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a);
     });
 
     const obj = {
@@ -91,6 +98,7 @@ function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI, s
     // init
     background.mode = BackgroundMode.Texture;
     hide(colorGUI);
+    hide(colorGUI2);
     hide(cubeMapGUI);
     show(fitModeGUI);
 }
