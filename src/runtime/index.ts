@@ -1,7 +1,7 @@
 import * as dat from "dat.gui";
 import { OrbitControl } from "@galacean/engine-toolkit-controls";
 import { Camera, Logger, Vector3, WebGLEngine } from "@galacean/engine";
-import { Model, loadScene, loadParticle } from "../core";
+import { Model, loadScene, loadParticle, Scene } from "../core";
 
 
 Logger.enable();
@@ -33,9 +33,14 @@ export async function createRuntime(canvas: string = "canvas", path: string, mod
 	const model = new Model(engine, rootEntity, path, modelList);
 	model.modelSelectGui();
 
-	// load scene
+	// 1. load scene - common
+	// const { background } = scene;
+	// loadScene(engine, background, gui);
+
+	// 2. load scene - class
 	const { background } = scene;
-	loadScene(engine, background, gui);
+	const scenec = new Scene(engine, background, gui);
+	scenec.loadScene();
 
 	// load particle
 	loadParticle(engine, rootEntity);
