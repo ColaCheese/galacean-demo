@@ -72,7 +72,6 @@ class Item {
                 ).then(entity => {
                     let particleFunc = entity.default;
                     this.particleEntity = particleFunc(this.rootEntity, resource);
-                    console.log(this.particleEntity)
                 })
                 .catch(err => {
                     console.error(err);
