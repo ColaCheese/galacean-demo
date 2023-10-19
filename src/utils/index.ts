@@ -1,8 +1,9 @@
-import getModelFileUrl from "./url";
 import readFile from "./read-file";
+import { getModelFileUrl, getParticleFileUrl } from "./url";
 
 
 export {
+    readFile,
     getModelFileUrl,
-    readFile
+    getParticleFileUrl
 }

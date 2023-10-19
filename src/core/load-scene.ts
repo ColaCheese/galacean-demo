@@ -8,7 +8,7 @@ import {
     AssetType,
     TextureCube,
     BackgroundMode
-} from "@galacean/engine";
+} from "@galacean/engine"; 
 
 
 function addGUI(cubeMaps: TextureCube[], background: Background, gui: dat.GUI) {

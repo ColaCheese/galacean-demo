@@ -1,6 +1,6 @@
 import Model from "./model";
+import Item from "./item";
 import { loadScene } from "./load-scene";
-import { loadParticle } from "./load-particle";
 
 
-export { Model, loadScene, loadParticle };
+export { Model, Item, loadScene };

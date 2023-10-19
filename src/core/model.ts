@@ -13,7 +13,7 @@ class Model {
     private modelList: string[];
     private model: string;
     private gui: dat.GUI;
-    private guiMap: { name: string; skin: string; action: string; };
+    private guiMap: { name: string, skin: string, action: string; };
     private skinController: any;
     private actionController: any;
 
@@ -138,14 +138,6 @@ class Model {
         this.actionController = this.gui.add(this.guiMap, "action", actionList).name("模型动作").onChange((v: string) => {
             state.setAnimation(0, v, true);
         });
-    }
-
-    public getModel(): string {
-        return this.model;
-    }
-
-    public getModelList(): string[] {
-        return this.modelList;
     }
 }
 

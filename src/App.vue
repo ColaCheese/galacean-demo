@@ -6,7 +6,7 @@ import { createRuntime } from "./runtime";
 onMounted(() => {
   createRuntime(
     "canvas",
-    "./src/assets/",
+    "./src/assets",
     [
       "archer",
       "biggoblin",
@@ -16,12 +16,16 @@ onMounted(() => {
       "pigman",
       "soldier",
       "test"
+    ],
+    [
+      "food",
+      "snow"
     ]
   );
 })
 </script>
 
 <template>
-	<canvas style="width: 300px; height: 500px" id="canvas" />
+  <canvas style="width: 300px; height: 500px" id="canvas" />
 </template>
 

@@ -1,17 +1,23 @@
 import * as dat from "dat.gui";
 import { OrbitControl } from "@galacean/engine-toolkit-controls";
 import { Camera, Logger, Vector3, WebGLEngine } from "@galacean/engine";
-import { Model, loadScene, loadParticle } from "../core";
+import { Model, Item, loadScene } from "../core";
 
 
 Logger.enable();
 
 const gui = new dat.GUI();
 
+// canvas: canvas id,
 // path: static files relative path (root),
 // modelList: model name list,
-// canvas: canvas id
-export async function createRuntime(canvas: string = "canvas", path: string, modelList: string[]): Promise<void> {
+// particleList: particle name list
+export async function createRuntime(
+	canvas: string = "canvas",
+	path: string,
+	modelList: string[],
+	particleList: string[]
+): Promise<void> {
 
 	// create engine
 	const engine = await WebGLEngine.create({ canvas: canvas });
@@ -33,12 +39,14 @@ export async function createRuntime(canvas: string = "canvas", path: string, mod
 	const model = new Model(engine, rootEntity, path, modelList);
 	model.modelSelectGui();
 
+	// load item
+	const item = new Item(engine, rootEntity, path);
+	item.loadParticleList(particleList);
+	item.particleSelectGui()
+
 	// load scene
 	const { background } = scene;
 	loadScene(engine, background, gui);
-
-	// load particle
-	loadParticle(engine, rootEntity);
 
 	engine.run();
 }

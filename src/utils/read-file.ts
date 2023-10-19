@@ -1,4 +1,4 @@
-import getModelFileUrl from "./url";
+import { getModelFileUrl } from "./url";
 
 
 // read file according to file type, default is json
