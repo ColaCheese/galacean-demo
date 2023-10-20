@@ -12,7 +12,7 @@ export default function particleFunc(rootEntity: Entity, resource: any): Entity{
 
     let particles: ParticleRenderer = particleEntity.addComponent(ParticleRenderer);
 
-    particles.maxCount = 100;
+    particles.maxCount = 200;
     particles.startTimeRandomness = 10;
     particles.lifetime = 4;
     particles.position = new Vector3(0, 20, 0);

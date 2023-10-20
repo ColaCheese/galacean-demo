@@ -42,8 +42,8 @@
 	},
 	"dependencies": {
 		"@galacean/engine": "1.0.4",
-		"@galacean/engine-lottie": "^1.0.0",
-		"@galacean/engine-spine": "0.9.1",
+		"@galacean/engine-lottie": "1.0.0",
+		"@galacean/engine-spine": "1.0.0-beta.1",
 		"@galacean/engine-toolkit-controls": "^1.0.0",
 		"@types/dat.gui": "^0.7.10",
 		"dat.gui": "^0.7.9",

@@ -3,7 +3,6 @@ import { OrbitControl } from "@galacean/engine-toolkit-controls";
 import { Camera, Logger, Vector3, WebGLEngine } from "@galacean/engine";
 import { Model, Item, loadScene } from "../core";
 
-
 Logger.enable();
 
 
@@ -66,6 +65,7 @@ export async function createRuntime(
 
 	// load item
 	const itemFolder = gui.addFolder("元素");
+	itemFolder.open();
 	const item = new Item(engine, rootEntity, path, itemFolder, guiMap);
 	item.loadParticleList(particleList);
 	item.loadLottieList(lottieList);

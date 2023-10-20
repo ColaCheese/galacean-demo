@@ -5,7 +5,6 @@ import {
     AssetType,
     Texture2D
 } from "@galacean/engine";
-import { LottieAnimation } from "@galacean/engine-lottie";
 import { getFileUrl } from "../utils";
 import createText from "../text/text";
 
@@ -83,10 +82,11 @@ class Item {
     }
 
     // load the lottie effect through its name
-    public loadLottieByName(lottie: string): void {
+    public async loadLottieByName(lottie: string): Promise<void> {
 
         let jsonPath = getFileUrl("lottie", this.path, lottie, "json");
         let atlasPath = getFileUrl("lottie", this.path, lottie, "atlas");
+        let item = await import(`../lottie/${lottie}.ts`);
 
         this.engine.resourceManager
             .load<Entity>({
@@ -97,16 +97,8 @@ class Item {
                 type: "lottie"
             })
             .then(lottieEntity => {
-                this.rootEntity.addChild(lottieEntity);
-                const lottie = lottieEntity.getComponent(LottieAnimation);
-
-                if(lottie instanceof LottieAnimation){
-                    lottie.isLooping = true;
-                    lottieEntity.transform.setScale(0.5, 0.5, 0.5);
-                    lottie.play();
-                }
-
-                this.lottieEntity = lottieEntity;
+                let itemFunc = item.default;
+                this.lottieEntity = itemFunc(this.rootEntity, lottieEntity);
             })
     }
 
@@ -121,6 +113,7 @@ class Item {
 
         particleFolder.add(this.guiMap, "particleOn", false).name("粒子效果开关").onChange((v: boolean) => {
             if (v) {
+                this.guiMap.particle = ""
                 this.particleController = particleFolder.add(this.guiMap, "particle", this.particleList).name("粒子效果名称").onChange((v: string) => {
                     // clear the former particle entity
                     this.rootEntity.removeChild(this.particleEntity);
@@ -140,26 +133,23 @@ class Item {
     }
 
     // initlize the lottie select GUI
-    public async lottieSelectGui(): Promise<void> {
+    public lottieSelectGui(): void {
 
         const lottieFolder = this.itemFolder.addFolder("lottie效果");
 
         lottieFolder.add(this.guiMap, "lottieOn", false).name("lottie开关").onChange((v: boolean) => {
+            // clear the lottie entity
+            this.rootEntity.removeChild(this.lottieEntity);
+            this.lottieEntity.destroy();
+
             if (v) {
+                this.guiMap.lottie = ""
                 this.lottieController = lottieFolder.add(this.guiMap, "lottie", this.lottieList).name("lottie名称").onChange(async (v: string) => {
-                    // clear the former lottie entity
-                    this.rootEntity.removeChild(this.lottieEntity);
-                    this.lottieEntity.destroy();
                     this.loadLottieByName(v);
                 })
             } else {
                 // remove lottie controller
-                if(this.lottieController) {
-                    // clear the lottie entity
-                    this.rootEntity.removeChild(this.lottieEntity);
-                    this.lottieEntity.destroy();
-                    lottieFolder.remove(this.lottieController);
-                }
+                lottieFolder.remove(this.lottieController);
             }
         })
     }

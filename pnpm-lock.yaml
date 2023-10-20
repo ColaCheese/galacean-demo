@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@galacean/engine': 1.0.4
-  '@galacean/engine-lottie': ^1.0.0
-  '@galacean/engine-spine': 0.9.1
+  '@galacean/engine-lottie': 1.0.0
+  '@galacean/engine-spine': 1.0.0-beta.1
   '@galacean/engine-toolkit-controls': ^1.0.0
   '@types/dat.gui': ^0.7.10
   '@types/node': ^20.6.0
@@ -26,7 +26,7 @@ specifiers:
 dependencies:
   '@galacean/engine': 1.0.4
   '@galacean/engine-lottie': 1.0.0_@galacean+engine@1.0.4
-  '@galacean/engine-spine': 0.9.1_@galacean+engine@1.0.4
+  '@galacean/engine-spine': 1.0.0-beta.1_@galacean+engine@1.0.4
   '@galacean/engine-toolkit-controls': registry.npmmirror.com/@galacean/engine-toolkit-controls/1.0.0_@galacean+engine@1.0.4
   '@types/dat.gui': registry.npmmirror.com/@types/dat.gui/0.7.10
   dat.gui: registry.npmmirror.com/dat.gui/0.7.9
@@ -125,10 +125,10 @@ packages:
       '@galacean/engine-math': 1.0.4
     dev: false
 
-  /@galacean/engine-spine/0.9.1_@galacean+engine@1.0.4:
-    resolution: {integrity: sha512-3Tm82dhjLMpAPDXvbIwIBQiV4nUOm75Hn94dXxC3Bmw/a3MdDuA/dKLg/kO7+m6hp0Ud2c89cFAWQt+TuRX9Zg==}
+  /@galacean/engine-spine/1.0.0-beta.1_@galacean+engine@1.0.4:
+    resolution: {integrity: sha512-umeAUH/vZzn3DwzFuKsTt+yhI8t9B9l4ghWOZQtbO/KfeBBmWlgrkr6vvednSZcnf24AnGSUJQFVT6Y9sHScmw==}
     peerDependencies:
-      '@galacean/engine': '>=0.9.0'
+      '@galacean/engine': '>=1.0.0'
     dependencies:
       '@galacean/engine': 1.0.4
     dev: false
