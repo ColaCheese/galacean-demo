@@ -6,7 +6,30 @@ import { Model, Item, loadScene } from "../core";
 
 Logger.enable();
 
-const gui = new dat.GUI();
+
+// initlize the gui
+const gui = new dat.GUI({width: 350});
+
+// define the gui buttons map
+const guiMap: {
+	name: string, // model name
+	skin: string, // model skin
+	action: string; // model animation
+	particleOn: boolean, // turn on/off particle
+	particle: string, // particle selector
+	lottieOn: boolean, // turn on/off lottie
+	lottie: string, // lottie selector
+	textOn: boolean // turn on/off text
+} = {
+	name: "",
+	skin: "",
+	action: "",
+	particleOn: false,
+	particle: "",
+	lottieOn: false,
+	lottie: "",
+	textOn: false
+};
 
 // canvas: canvas id,
 // path: static files relative path (root),
@@ -16,7 +39,8 @@ export async function createRuntime(
 	canvas: string = "canvas",
 	path: string,
 	modelList: string[],
-	particleList: string[]
+	particleList: string[],
+	lottieList: string[]
 ): Promise<void> {
 
 	// create engine
@@ -36,13 +60,18 @@ export async function createRuntime(
 	cameraEntity.transform.position = new Vector3(0, 0, 60);
 
 	// load model
-	const model = new Model(engine, rootEntity, path, modelList);
+	const modelFolder = gui.addFolder("模型");
+	const model = new Model(engine, rootEntity, path, modelList, modelFolder, guiMap);
 	model.modelSelectGui();
 
 	// load item
-	const item = new Item(engine, rootEntity, path);
+	const itemFolder = gui.addFolder("元素");
+	const item = new Item(engine, rootEntity, path, itemFolder, guiMap);
 	item.loadParticleList(particleList);
+	item.loadLottieList(lottieList);
 	item.particleSelectGui()
+	item.lottieSelectGui();
+	item.textOnGui();
 
 	// load scene
 	const { background } = scene;

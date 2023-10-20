@@ -20,7 +20,8 @@ onMounted(() => {
     [
       "food",
       "snow"
-    ]
+    ],
+    ["logo"]
   );
 })
 </script>
