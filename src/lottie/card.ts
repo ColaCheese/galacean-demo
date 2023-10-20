@@ -4,16 +4,13 @@ import { LottieAnimation } from "@galacean/engine-lottie";
 
 export default function lottieFunc(rootEntity: Entity, lottieEntity: Entity): Entity{
 
-    lottieEntity.transform.setPosition(0, 15, 0);
+    lottieEntity.transform.setPosition(0, 10, 0);
     rootEntity.addChild(lottieEntity);
     const lottie = lottieEntity.getComponent(LottieAnimation);
 
     if(lottie instanceof LottieAnimation){
-        lottieEntity.transform.setScale(2.5, 2.5, 2.5);
+        lottieEntity.transform.setScale(3, 3, 3);
         lottie.play();
-        setTimeout(() => {
-            lottie.pause();
-        }, 1000)
     }
 
     return lottieEntity;

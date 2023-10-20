@@ -138,16 +138,18 @@ class Item {
         const lottieFolder = this.itemFolder.addFolder("lottie效果");
 
         lottieFolder.add(this.guiMap, "lottieOn", false).name("lottie开关").onChange((v: boolean) => {
-            // clear the lottie entity
-            this.rootEntity.removeChild(this.lottieEntity);
-            this.lottieEntity.destroy();
-
             if (v) {
                 this.guiMap.lottie = ""
                 this.lottieController = lottieFolder.add(this.guiMap, "lottie", this.lottieList).name("lottie名称").onChange(async (v: string) => {
+                    // clear the former lottie entity
+                    this.rootEntity.removeChild(this.lottieEntity);
+                    this.lottieEntity.destroy();
                     this.loadLottieByName(v);
                 })
             } else {
+                // clear the lottie entity
+                this.rootEntity.removeChild(this.lottieEntity);
+                this.lottieEntity.destroy();
                 // remove lottie controller
                 lottieFolder.remove(this.lottieController);
             }

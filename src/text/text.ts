@@ -20,6 +20,7 @@ export default function createText(
 ): Entity {
     const textEntity = rootEntity.createChild("text");
     textEntity.transform.position = pos;
+    textEntity.transform.setScale(10, 10, 10);
 
     const renderer = textEntity.addComponent(TextRenderer);
     renderer.color = color;
