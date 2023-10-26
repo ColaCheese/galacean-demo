@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.10 (2023-10-26)
+
+
+### 🎫 Chores
+
+* **whole**: Change the rullup options to exclude engine-lottie for packaging ([439cbad](https://github.com/ColaCheese/galacean-demo/commit/439cbad))
+
+
+
+
+
 ## 0.2.9 (2023-10-26)
 
 
