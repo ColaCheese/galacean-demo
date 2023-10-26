@@ -15,7 +15,7 @@ export default function particleFunc(rootEntity: Entity, resource: any): Entity{
     particles.maxCount = 200;
     particles.startTimeRandomness = 10;
     particles.lifetime = 4;
-    particles.position = new Vector3(0, 20, 0);
+    particles.position = new Vector3(0, 15, -20);
     particles.positionRandomness = new Vector3(100, 0, 0);
     particles.velocity = new Vector3(0, -3, 0);
     particles.velocityRandomness = new Vector3(1, 2, 0);

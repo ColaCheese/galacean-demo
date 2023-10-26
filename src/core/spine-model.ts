@@ -4,7 +4,7 @@ import { SpineAnimation } from "@galacean/engine-spine";
 import { getFileUrl, readFile } from "../utils";
 
 
-class Model {
+class SpineModel {
 
     private engine: Engine;
     private rootEntity: Entity;
@@ -43,9 +43,9 @@ class Model {
     // the core function to load model through its name
     public loadModelByName(model: string): void {
 
-        let atlasPath = getFileUrl("model", this.path, model, 'atlas');
-        let jsonPath = getFileUrl("model", this.path, model, 'json');
-        let pngPath = getFileUrl("model", this.path, model, 'png');
+        let atlasPath = getFileUrl("spine", this.path, model, 'atlas');
+        let jsonPath = getFileUrl("spine", this.path, model, 'json');
+        let pngPath = getFileUrl("spine", this.path, model, 'png');
 
         this.engine.resourceManager
             .load({
@@ -58,7 +58,7 @@ class Model {
                 this.spineEntity.destroy();
 
                 // adjust the position of spine entity
-                spineEntity.transform.setPosition(0, -20, 0);
+                spineEntity.transform.setPosition(0, -0.4, 16);
 
                 // add spine entity to root entity
                 this.rootEntity.addChild(spineEntity);
@@ -66,7 +66,7 @@ class Model {
 
                 // spine animation component settings
                 const spineAnimation = spineEntity.getComponent(SpineAnimation);
-                spineAnimation.scale = 0.05;
+                spineAnimation.scale = 0.002;
                 const { skeleton, state } = spineAnimation;
 
                 // load model skins and actions
@@ -97,9 +97,9 @@ class Model {
     // add select model gui and load the first model
     public modelSelectGui(): void {
 
-        this.guiMap.name = this.model;
+        this.guiMap.spineName = this.model;
 
-        this.modelFolder.add(this.guiMap, "name", this.modelList).name("模型名称").onChange((v: string) => {
+        this.modelFolder.add(this.guiMap, "spineName", this.modelList).name("模型名称").onChange((v: string) => {
             this.loadModelByName(v);
         });
         this.modelFolder.open();
@@ -110,8 +110,8 @@ class Model {
     // initlize the model skin and action select GUI
     public modelModifyGui(state: any, skeleton: any, skinList: string[], actionList: string[]) {
         
-        this.guiMap.skin = skinList[0];
-        this.guiMap.action = actionList[0];
+        this.guiMap.spineSkin = skinList[0];
+        this.guiMap.spineAction = actionList[0];
 
         // remove former controllers
         if(this.skinController && this.actionController) {
@@ -119,16 +119,16 @@ class Model {
             this.modelFolder.remove(this.actionController);
         }
 
-        this.skinController = this.modelFolder.add(this.guiMap, "skin", skinList).name("模型皮肤").onChange((v: string) => {
+        this.skinController = this.modelFolder.add(this.guiMap, "spineSkin", skinList).name("模型皮肤").onChange((v: string) => {
             skeleton.setSkinByName(v);
             state.apply(skeleton);
         });
 
-        this.actionController = this.modelFolder.add(this.guiMap, "action", actionList).name("模型动作").onChange((v: string) => {
+        this.actionController = this.modelFolder.add(this.guiMap, "spineAction", actionList).name("模型动作").onChange((v: string) => {
             state.setAnimation(0, v, true);
         });
     }
 }
 
 
-export default Model;
+export default SpineModel;

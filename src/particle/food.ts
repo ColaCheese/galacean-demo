@@ -114,7 +114,7 @@ export default function particleFunc(rootEntity: Entity, resource: any): Entity 
     particles.isFadeOut = true;
     particles.texture = resource;
     particles.spriteSheet = spriteSheet;
-    particles.blendMode = ParticleRendererBlendMode.Additive;
+    particles.blendMode = ParticleRendererBlendMode.Transparent;
     particles.start();
 
     return particleEntity;

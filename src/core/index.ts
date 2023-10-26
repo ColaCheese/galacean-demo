@@ -1,6 +1,7 @@
-import Model from "./model";
+import SpineModel from "./spine-model";
+import GltfModel from "./gltf-model";
 import Item from "./item";
 import { loadScene } from "./load-scene";
 
 
-export { Model, Item, loadScene };
+export { SpineModel, GltfModel, Item, loadScene };

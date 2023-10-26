@@ -18,13 +18,17 @@ onMounted(() => {
       "test"
     ],
     [
+      "earth"
+    ],
+    [
       "food",
       "snow"
     ],
     [
       "logo",
       "card",
-      "box"
+      "box",
+      "lion"
     ]
   );
 })
