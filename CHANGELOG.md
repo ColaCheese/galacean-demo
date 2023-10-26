@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.9 (2023-10-26)
+
+
+### 🎫 Chores
+
+* **whole**: Change the export function for building process ([d6f4e9e](https://github.com/ColaCheese/galacean-demo/commit/d6f4e9e))
+
+
+
+
+
 ## 0.2.8 (2023-10-26)
 
 
