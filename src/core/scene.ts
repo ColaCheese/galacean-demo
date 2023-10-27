@@ -88,7 +88,9 @@ class Scene {
         }
         this.background.mode = BackgroundMode.Texture;
         
-        this.gui
+        const bgFolder = this.gui.addFolder("背景");
+        bgFolder.open();
+        bgFolder
             .add(this.background, "mode", {
                 Sky: BackgroundMode.Sky,
                 SolidColor: BackgroundMode.SolidColor,
@@ -122,12 +124,12 @@ class Scene {
                 solidColor.b,
             ],
         };
-        this.colorGUI = this.gui.addColor(colorObj, "color").name("颜色").onChange((v) => {
+        this.colorGUI = bgFolder.addColor(colorObj, "color").name("颜色").onChange((v) => {
             this.background.solidColor.set(v[0] / 255, v[1] / 255, v[2] / 255, color.a);
         });
 
         let color = {a: 1};
-        this.colorGUI2 = this.gui.add(color, "a", 0, 1).name("透明度").onChange((v2) => {
+        this.colorGUI2 = bgFolder.add(color, "a", 0, 1).name("透明度").onChange((v2) => {
             color.a = v2;
             this.background.solidColor.set(colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a);
         });
@@ -138,7 +140,7 @@ class Scene {
         const mode = {
             fitMode: 1,
         };
-        this.cubeMapGUI = this.gui
+        this.cubeMapGUI = bgFolder
             .add(obj, "cubeMap", { cubeMap1: 0, cubeMap2: 1, cubeMap3: 2})
             .name("立方体纹理")
             .onChange((v) => {
@@ -150,7 +152,7 @@ class Scene {
                 // @ts-ignore
                 this.background.sky.material.texture = cubeMaps[parseInt(v)];
             });
-        this.fitModeGUI = this.gui
+        this.fitModeGUI = bgFolder
             .add(mode, "fitMode", { AspectFitWidth: 0, AspectFitHeight: 1, Fill: 2 })
             .name("纹理适配模式")
             .onChange((v) => {

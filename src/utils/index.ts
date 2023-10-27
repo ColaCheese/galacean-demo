@@ -1,8 +1,8 @@
-import getModelFileUrl from "./url";
 import readFile from "./read-file";
+import { getFileUrl } from "./url";
 
 
 export {
-    getModelFileUrl,
-    readFile
+    readFile,
+    getFileUrl
 }

@@ -1,7 +1,7 @@
 // get static model resources
-function getModelFileUrl(path: string, modelName: string, fileType: string): string {
-    return `${path}models/${modelName}/${modelName}.${fileType}`;
+function getFileUrl(type: string, path: string, modelName: string, fileType: string): string {
+    return `${path}/${type}/${modelName}/${modelName}.${fileType}`;
 }
 
 
-export default getModelFileUrl
+export { getFileUrl }
