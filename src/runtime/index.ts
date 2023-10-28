@@ -98,7 +98,9 @@ export async function createRuntime(
 
 	// load scene
 	const { background } = scene;
-	const scenec = new Scene(engine, background, gui);
+	const sceneFolder = gui.addFolder("背景");
+	sceneFolder.open();
+	const scenec = new Scene(engine, background, path, sceneFolder);
 	scenec.loadScene();
 
 	engine.run();

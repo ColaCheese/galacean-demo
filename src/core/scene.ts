@@ -15,17 +15,19 @@ class Scene {
 
     private engine: Engine;
     private background: Background;
-    private gui: dat.GUI;
+    private path: string;
+    private sceneFolder: dat.GUI;
     private skyMaterial: SkyBoxMaterial;
     private colorGUI: any;
     private colorGUI2: any;
     private cubeMapGUI: any;
     private fitModeGUI: any;
 
-    public constructor(_engine: Engine, _background: Background, _gui: dat.GUI) {
+    public constructor(_engine: Engine, _background: Background, _path: string, _sceneFolder: dat.GUI) {
         this.engine = _engine;
         this.background = _background;
-        this.gui = _gui;
+        this.path = _path;
+        this.sceneFolder = _sceneFolder;
         this.skyMaterial = (this.background.sky.material = new SkyBoxMaterial(this.engine)); // 添加天空盒材质
     }
 
@@ -36,32 +38,32 @@ class Scene {
             .load<[TextureCube, TextureCube, TextureCube, Texture2D]>([
                 {
                     urls: [
-                        getSceneFileUrl('TextureCube', '1', 'jpeg'),
-                        getSceneFileUrl('TextureCube', '2', 'jpeg'),
-                        getSceneFileUrl('TextureCube', '3', 'jpeg'),
-                        getSceneFileUrl('TextureCube', '4', 'jpeg'),
-                        getSceneFileUrl('TextureCube', '5', 'jpeg'),
-                        getSceneFileUrl('TextureCube', '6', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube', '1', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube', '2', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube', '3', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube', '4', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube', '5', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube', '6', 'jpeg'),
                     ],
                     type: AssetType.TextureCube,
                 },
                 {
                     urls: [
-                        getSceneFileUrl('TextureCube2', '1', 'jpeg'),
-                        getSceneFileUrl('TextureCube2', '2', 'jpeg'),
-                        getSceneFileUrl('TextureCube2', '3', 'jpeg'),
-                        getSceneFileUrl('TextureCube2', '4', 'jpeg'),
-                        getSceneFileUrl('TextureCube2', '5', 'jpeg'),
-                        getSceneFileUrl('TextureCube2', '6', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube2', '1', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube2', '2', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube2', '3', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube2', '4', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube2', '5', 'jpeg'),
+                        getSceneFileUrl(this.path, 'TextureCube2', '6', 'jpeg'),
                     ],
                     type: AssetType.TextureCube,
                 },
                 {
-                    url: getSceneFileUrl('TextureCube3', 'hdr', 'bin'),
+                    url: getSceneFileUrl(this.path, 'TextureCube3', 'hdr', 'bin'),
                     type: AssetType.HDR,
                 },
                 {
-                    url: getSceneFileUrl('Texture2D', 'Texture2D', 'png'),
+                    url: getSceneFileUrl(this.path, 'Texture2D', 'Texture2D', 'png'),
                     type: AssetType.Texture2D,
                 },
             ])
@@ -89,9 +91,7 @@ class Scene {
         }
         this.background.mode = BackgroundMode.Texture;
         
-        const bgFolder = this.gui.addFolder("背景");
-        bgFolder.open();
-        bgFolder
+        this.sceneFolder
             .add(this.background, "mode", {
                 Sky: BackgroundMode.Sky,
                 SolidColor: BackgroundMode.SolidColor,
@@ -125,12 +125,12 @@ class Scene {
                 solidColor.b,
             ],
         };
-        this.colorGUI = bgFolder.addColor(colorObj, "color").name("颜色").onChange((v) => {
+        this.colorGUI = this.sceneFolder.addColor(colorObj, "color").name("颜色").onChange((v) => {
             this.background.solidColor.set(v[0] / 255, v[1] / 255, v[2] / 255, color.a);
         });
 
         let color = {a: 1};
-        this.colorGUI2 = bgFolder.add(color, "a", 0, 1).name("透明度").onChange((v2) => {
+        this.colorGUI2 = this.sceneFolder.add(color, "a", 0, 1).name("透明度").onChange((v2) => {
             color.a = v2;
             this.background.solidColor.set(colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a);
         });
@@ -141,7 +141,7 @@ class Scene {
         const mode = {
             fitMode: 1,
         };
-        this.cubeMapGUI = bgFolder
+        this.cubeMapGUI = this.sceneFolder
             .add(obj, "cubeMap", { cubeMap1: 0, cubeMap2: 1, cubeMap3: 2})
             .name("立方体纹理")
             .onChange((v) => {
@@ -153,7 +153,7 @@ class Scene {
                 // @ts-ignore
                 this.background.sky.material.texture = cubeMaps[parseInt(v)];
             });
-        this.fitModeGUI = bgFolder
+        this.fitModeGUI = this.sceneFolder
             .add(mode, "fitMode", { AspectFitWidth: 0, AspectFitHeight: 1, Fill: 2 })
             .name("纹理适配模式")
             .onChange((v) => {

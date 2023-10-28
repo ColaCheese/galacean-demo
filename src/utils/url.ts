@@ -4,8 +4,8 @@ function getFileUrl(type: string, path: string, modelName: string, fileType: str
 }
 
 
-function getSceneFileUrl(modelName: string, fileName: string, fileType: string): string {
-    return new URL(`../assets/scene/${modelName}/${fileName}.${fileType}`, import.meta.url).href;
+function getSceneFileUrl(path: string, modelName: string, fileName: string, fileType: string): string {
+    return `${path}/scene/${modelName}/${fileName}.${fileType}`;
 }
 
 
