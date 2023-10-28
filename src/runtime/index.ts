@@ -32,7 +32,8 @@ const guiMap: {
 	particle: string, // particle selector
 	lottieOn: boolean, // turn on/off lottie
 	lottie: string, // lottie selector
-	textOn: boolean // turn on/off text
+	textOn: boolean, // turn on/off text
+	texture: string, // texture selector
 } = {
 	spineName: "",
 	spineSkin: "",
@@ -43,7 +44,8 @@ const guiMap: {
 	particle: "",
 	lottieOn: false,
 	lottie: "",
-	textOn: false
+	textOn: false,
+	texture: "",
 };
 
 // canvas: canvas id,
@@ -56,7 +58,8 @@ export async function createRuntime(
 	spineModelList: string[],
 	gltfModelList: string[],
 	particleList: string[],
-	lottieList: string[]
+	lottieList: string[],
+	textureList: string[],
 ): Promise<void> {
 
 	// create engine
@@ -100,8 +103,10 @@ export async function createRuntime(
 	const { background } = scene;
 	const sceneFolder = gui.addFolder("背景");
 	sceneFolder.open();
-	const scenec = new Scene(engine, background, path, sceneFolder);
+	const scenec = new Scene(engine, rootEntity, background, path, sceneFolder, guiMap);
+	scenec.loadTextureList(textureList);
 	scenec.loadScene();
+	scenec.textureSelectGui();
 
 	engine.run();
 }

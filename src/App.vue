@@ -29,6 +29,10 @@ onMounted(() => {
       "card",
       "box",
       "lion"
+    ],
+    [
+      "Texture2D1",
+      "Texture2D2"
     ]
   );
 })

@@ -6,7 +6,9 @@ import {
     SkyBoxMaterial,
     AssetType,
     TextureCube,
-    BackgroundMode
+    BackgroundMode,
+    Texture2D,
+    Entity
 } from "@galacean/engine";
 import { getSceneFileUrl } from "../utils";
 
@@ -14,21 +16,78 @@ import { getSceneFileUrl } from "../utils";
 class Scene {
 
     private engine: Engine;
+    private rootEntity: Entity;
     private background: Background;
     private path: string;
     private sceneFolder: dat.GUI;
+    private guiMap: any;
+    private textureList: string[];
+    private textureEntity: Entity;
+    private textureController: any;
     private skyMaterial: SkyBoxMaterial;
     private colorGUI: any;
     private colorGUI2: any;
     private cubeMapGUI: any;
     private fitModeGUI: any;
 
-    public constructor(_engine: Engine, _background: Background, _path: string, _sceneFolder: dat.GUI) {
+    private sceneType: any;
+
+    public constructor(_engine: Engine, _rootEntity: Entity, _background: Background, _path: string, _sceneFolder: dat.GUI, _guiMap: any) {
         this.engine = _engine;
+        this.rootEntity = _rootEntity;
         this.background = _background;
         this.path = _path;
         this.sceneFolder = _sceneFolder;
+        this.guiMap = _guiMap;
         this.skyMaterial = (this.background.sky.material = new SkyBoxMaterial(this.engine)); // 添加天空盒材质
+
+        // init
+        this.textureList = [];
+        this.textureEntity = new Entity(this.engine, undefined);
+        this.textureController = null;
+        this.sceneType = null;
+    }
+
+    // load the list of texture
+    public loadTextureList(textureList: string[]): void {
+        this.textureList = textureList;
+    }
+
+    // load the texture through its name
+    public loadTextureByName(texture: string): void {
+
+        let textureSrc = getSceneFileUrl(this.path, "Texture2D", texture, "png");
+
+        this.engine.resourceManager
+            .load<Texture2D>({
+                url: textureSrc,
+                type: AssetType.Texture2D
+            })
+            .then((texture) => {
+                this.background.texture = texture;
+            });
+    }
+
+    // initlize the texture select GUI
+    public textureSelectGui(): void {
+        
+        if (this.sceneType == 2) {
+            this.guiMap.texture = ""
+            this.textureController = this.sceneFolder.add(this.guiMap, "texture", this.textureList).name("纹理名称").onChange((v: string) => {
+                // clear the former texture entity
+                this.rootEntity.removeChild(this.textureEntity);
+                this.textureEntity.destroy();
+                this.loadTextureByName(v);
+            })
+        } else {
+            // remove texture controller
+            if(this.textureController) {
+                // clear the texture entity
+                this.rootEntity.removeChild(this.textureEntity);
+                this.textureEntity.destroy();
+                this.sceneFolder.remove(this.textureController);
+            }
+        }
     }
 
     public loadScene(): void {
@@ -63,7 +122,7 @@ class Scene {
                     type: AssetType.HDR,
                 },
                 {
-                    url: getSceneFileUrl(this.path, 'Texture2D', 'Texture2D', 'png'),
+                    url: getSceneFileUrl(this.path, 'Texture2D', 'Texture2D1', 'png'),
                     type: AssetType.Texture2D,
                 },
             ])
@@ -99,6 +158,8 @@ class Scene {
             }).name("背景类型")
             .onChange((v) => {
                 const mode = (this.background.mode = parseInt(v));
+                this.sceneType = mode;
+                
                 hide(this.colorGUI);
                 hide(this.colorGUI2);
                 hide(this.cubeMapGUI);
@@ -115,6 +176,7 @@ class Scene {
                         show(this.fitModeGUI);
                         break;
                 }
+                this.textureSelectGui();
             });
 
         const solidColor = this.background.solidColor;
