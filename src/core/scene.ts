@@ -8,6 +8,7 @@ import {
     TextureCube,
     BackgroundMode
 } from "@galacean/engine";
+import { getSceneFileUrl } from "../utils";
 
 
 class Scene {
@@ -35,32 +36,32 @@ class Scene {
             .load<[TextureCube, TextureCube, TextureCube, Texture2D]>([
                 {
                     urls: [
-                        this.getSceneFileUrl('TextureCube', '1', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube', '2', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube', '3', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube', '4', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube', '5', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube', '6', 'jpeg'),
+                        getSceneFileUrl('TextureCube', '1', 'jpeg'),
+                        getSceneFileUrl('TextureCube', '2', 'jpeg'),
+                        getSceneFileUrl('TextureCube', '3', 'jpeg'),
+                        getSceneFileUrl('TextureCube', '4', 'jpeg'),
+                        getSceneFileUrl('TextureCube', '5', 'jpeg'),
+                        getSceneFileUrl('TextureCube', '6', 'jpeg'),
                     ],
                     type: AssetType.TextureCube,
                 },
                 {
                     urls: [
-                        this.getSceneFileUrl('TextureCube2', '1', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube2', '2', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube2', '3', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube2', '4', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube2', '5', 'jpeg'),
-                        this.getSceneFileUrl('TextureCube2', '6', 'jpeg'),
+                        getSceneFileUrl('TextureCube2', '1', 'jpeg'),
+                        getSceneFileUrl('TextureCube2', '2', 'jpeg'),
+                        getSceneFileUrl('TextureCube2', '3', 'jpeg'),
+                        getSceneFileUrl('TextureCube2', '4', 'jpeg'),
+                        getSceneFileUrl('TextureCube2', '5', 'jpeg'),
+                        getSceneFileUrl('TextureCube2', '6', 'jpeg'),
                     ],
                     type: AssetType.TextureCube,
                 },
                 {
-                    url: this.getSceneFileUrl('TextureCube3', 'hdr', 'bin'),
+                    url: getSceneFileUrl('TextureCube3', 'hdr', 'bin'),
                     type: AssetType.HDR,
                 },
                 {
-                    url: this.getSceneFileUrl('Texture2D', 'Texture2D', 'png'),
+                    url: getSceneFileUrl('Texture2D', 'Texture2D', 'png'),
                     type: AssetType.Texture2D,
                 },
             ])
@@ -165,10 +166,6 @@ class Scene {
         hide(this.colorGUI2);
         hide(this.cubeMapGUI);
         show(this.fitModeGUI);
-    }
-
-    public getSceneFileUrl(modelName: string, fileName: string, fileType: string): string {
-        return new URL(`../assets/scene/${modelName}/${fileName}.${fileType}`, import.meta.url).href;
     }
 
 }

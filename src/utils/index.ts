@@ -1,8 +1,9 @@
 import readFile from "./read-file";
-import { getFileUrl } from "./url";
+import { getFileUrl, getSceneFileUrl } from "./url";
 
 
 export {
     readFile,
-    getFileUrl
+    getFileUrl,
+    getSceneFileUrl
 }
