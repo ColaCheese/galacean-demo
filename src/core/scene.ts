@@ -24,11 +24,11 @@ class Scene {
     private textureList: string[];
     private textureEntity: Entity;
     private textureController: any;
+    private fitModeController: any;
     private skyMaterial: SkyBoxMaterial;
     private colorGUI: any;
     private colorGUI2: any;
     private cubeMapGUI: any;
-    private fitModeGUI: any;
 
     private sceneType: any;
 
@@ -45,6 +45,7 @@ class Scene {
         this.textureList = [];
         this.textureEntity = new Entity(this.engine, undefined);
         this.textureController = null;
+        this.fitModeController = null;
         this.sceneType = null;
     }
 
@@ -54,10 +55,11 @@ class Scene {
     }
 
     // load the texture through its name
-    public loadTextureByName(texture: string): void {
-
+    public loadTextureByName(texture: string, fitMode: number = 1): void {
+        this.background.mode = BackgroundMode.Texture;
+        this.background.textureFillMode = fitMode;
+        
         let textureSrc = getSceneFileUrl(this.path, "Texture2D", texture, "png");
-
         this.engine.resourceManager
             .load<Texture2D>({
                 url: textureSrc,
@@ -72,13 +74,20 @@ class Scene {
     public textureSelectGui(): void {
         
         if (this.sceneType == 2) {
-            this.guiMap.texture = ""
+            this.guiMap.texture = "";
+            this.guiMap.fitMode = 0;
             this.textureController = this.sceneFolder.add(this.guiMap, "texture", this.textureList).name("纹理名称").onChange((v: string) => {
                 // clear the former texture entity
                 this.rootEntity.removeChild(this.textureEntity);
                 this.textureEntity.destroy();
-                this.loadTextureByName(v);
+                this.loadTextureByName(this.guiMap.texture, this.guiMap.fitMode);
             })
+            this.fitModeController = this.sceneFolder.add(this.guiMap, "fitMode", { AspectFitWidth: 0, AspectFitHeight: 1, Fill: 2 }).name("纹理适配模式").onChange((v: number) => {
+                // clear the former texture entity
+                this.rootEntity.removeChild(this.textureEntity);
+                this.textureEntity.destroy();
+                this.loadTextureByName(this.guiMap.texture, this.guiMap.fitMode);
+            });
         } else {
             // remove texture controller
             if(this.textureController) {
@@ -86,6 +95,8 @@ class Scene {
                 this.rootEntity.removeChild(this.textureEntity);
                 this.textureEntity.destroy();
                 this.sceneFolder.remove(this.textureController);
+                // clear the fitMode
+                this.sceneFolder.remove(this.fitModeController);
             }
         }
     }
@@ -94,7 +105,7 @@ class Scene {
 
         this.engine.resourceManager
             //@ts-ignore
-            .load<[TextureCube, TextureCube, TextureCube, Texture2D]>([
+            .load<[TextureCube, TextureCube, TextureCube]>([
                 {
                     urls: [
                         getSceneFileUrl(this.path, 'TextureCube', '1', 'jpeg'),
@@ -121,18 +132,10 @@ class Scene {
                     url: getSceneFileUrl(this.path, 'TextureCube3', 'hdr', 'bin'),
                     type: AssetType.HDR,
                 },
-                {
-                    url: getSceneFileUrl(this.path, 'Texture2D', 'Texture2D1', 'png'),
-                    type: AssetType.Texture2D,
-                },
             ])
-            .then(([cubeMap1, cubeMap2, cubeMap3, texture]) => {
-                // 添加天空盒背景
-                // this.background.mode = BackgroundMode.Sky; // 默认纯色背景
-                // this.skyMaterial = (this.background.sky.material = new SkyBoxMaterial(this.engine)); // 添加天空盒材质
+            .then(([cubeMap1, cubeMap2, cubeMap3]) => {
                 this.skyMaterial.texture = cubeMap1; // 设置立方体纹理
                 this.background.sky.mesh = PrimitiveMesh.createCuboid(this.engine, 2, 2, 2); // 设置天空盒网格
-                this.background.texture = texture;
                 return [cubeMap1, cubeMap2, cubeMap3];
             })
             .then((cubeMaps) => {
@@ -163,7 +166,6 @@ class Scene {
                 hide(this.colorGUI);
                 hide(this.colorGUI2);
                 hide(this.cubeMapGUI);
-                hide(this.fitModeGUI);
                 switch (mode) {
                     case BackgroundMode.Sky:
                         show(this.cubeMapGUI);
@@ -171,9 +173,6 @@ class Scene {
                     case BackgroundMode.SolidColor:
                         show(this.colorGUI);
                         show(this.colorGUI2);
-                        break;
-                    case BackgroundMode.Texture:
-                        show(this.fitModeGUI);
                         break;
                 }
                 this.textureSelectGui();
@@ -215,19 +214,12 @@ class Scene {
                 // @ts-ignore
                 this.background.sky.material.texture = cubeMaps[parseInt(v)];
             });
-        this.fitModeGUI = this.sceneFolder
-            .add(mode, "fitMode", { AspectFitWidth: 0, AspectFitHeight: 1, Fill: 2 })
-            .name("纹理适配模式")
-            .onChange((v) => {
-                this.background.textureFillMode = parseInt(v);
-            });
 
         // init
         this.background.mode = BackgroundMode.Texture;
         hide(this.colorGUI);
         hide(this.colorGUI2);
         hide(this.cubeMapGUI);
-        show(this.fitModeGUI);
     }
 
 }

@@ -34,6 +34,7 @@ const guiMap: {
 	lottie: string, // lottie selector
 	textOn: boolean, // turn on/off text
 	texture: string, // texture selector
+	fitMode: any, // fitMode
 } = {
 	spineName: "",
 	spineSkin: "",
@@ -46,6 +47,7 @@ const guiMap: {
 	lottie: "",
 	textOn: false,
 	texture: "",
+	fitMode: null,
 };
 
 // canvas: canvas id,
@@ -105,8 +107,9 @@ export async function createRuntime(
 	sceneFolder.open();
 	const scenec = new Scene(engine, rootEntity, background, path, sceneFolder, guiMap);
 	scenec.loadTextureList(textureList);
-	scenec.loadScene();
 	scenec.textureSelectGui();
+	scenec.loadScene();
+	// scenec.loadTextureByName("Texture2D1");
 
 	engine.run();
 }
