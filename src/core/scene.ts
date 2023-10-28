@@ -168,7 +168,7 @@ class Scene {
     }
 
     public getSceneFileUrl(modelName: string, fileName: string, fileType: string): string {
-        return new URL(`../sceneModels/${modelName}/${fileName}.${fileType}`, import.meta.url).href;
+        return new URL(`../assets/scene/${modelName}/${fileName}.${fileType}`, import.meta.url).href;
     }
 
 }
