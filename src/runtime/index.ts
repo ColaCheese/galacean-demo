@@ -110,9 +110,9 @@ export async function createRuntime(
 	scenec.loadTextureList(textureList);
 	scenec.loadSkyList(skyList);
 	scenec.sceneSelectGui();
-	// scenec.loadTextureByName("Texture2D1");
-	// scenec.loadSkyByName("hdr", 1);
-	// scenec.loadColorByName([100,100,100,0.1]);
+	// scenec.loadTextureByName("Texture2D1", 0);
+	// scenec.loadSkyByName("TextureCube", "six");
+	// scenec.loadColorByRGBA([200,120,130,0.5]);
 
 	engine.run();
 }

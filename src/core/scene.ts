@@ -57,10 +57,10 @@ class Scene {
     }
 
     // load the texture through its name
-    public loadTextureByName(texture: string, fitMode: number = 1): void {
-        this.background.mode = BackgroundMode.Texture;
-        this.background.textureFillMode = fitMode;
+    public loadTextureByName(texture: string, fitMode: number): void {
         
+        this.background.mode = BackgroundMode.Texture;
+
         let textureSrc = getSceneFileUrl(this.path, "Texture2D", texture, "png");
         this.engine.resourceManager
             .load<Texture2D>({
@@ -68,6 +68,7 @@ class Scene {
                 type: AssetType.Texture2D
             })
             .then((texture) => {
+                this.background.textureFillMode = fitMode;
                 this.background.texture = texture;
             });
     }
@@ -78,7 +79,7 @@ class Scene {
     }
 
     // load the texture through its name skyType: six-TextureCube hdr-HDR
-    public loadSkyByName(sky: string, skyType: string = 'six'): void {
+    public loadSkyByName(sky: string, skyType: string): void {
         this.background.mode = BackgroundMode.Sky;
         this.background.sky.mesh = PrimitiveMesh.createCuboid(this.engine, 2, 2, 2); // 设置天空盒网格
 
@@ -86,7 +87,7 @@ class Scene {
         let skySrc = "";
         let load : any;
 
-        if(skyType == 'six') {
+        if(skyType === "six") {
             for (let i=1; i<=6; i++) {
                 skySrcs.push(getSceneFileUrl(this.path, sky, ''+i, "jpeg"));
             }
@@ -104,7 +105,7 @@ class Scene {
         this.engine.resourceManager
             .load<TextureCube>(load)
             .then((cubeMap) => {
-                if(skyType == 'hdr') {
+                if(skyType === "hdr") {
                     this.skyMaterial.textureDecodeRGBM = true; // HDR
                 } else {
                     this.skyMaterial.textureDecodeRGBM = false;
@@ -114,7 +115,7 @@ class Scene {
     }
 
     // load the color through its name
-    public loadColorByName(color: Array<number>): void {
+    public loadColorByRGBA(color: Array<number>): void {
         this.background.mode = BackgroundMode.SolidColor;
         this.background.solidColor.set(color[0] / 255, color[1] / 255, color[2] / 255, color[3]);
     }
@@ -179,14 +180,14 @@ class Scene {
             let color = {a: 0.5};
             colorObj.color = [100, 100, 100];
             this.colorController = this.sceneFolder.addColor(colorObj, "color").name("颜色").onChange((v) => {
-                colorObj.color = v;
-                this.loadColorByName([colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a]);
+                // colorObj.color = v;
+                this.loadColorByRGBA([colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a]);
             });
             this.colorController2 = this.sceneFolder.add(color, "a", 0, 1).name("透明度").onChange((v2) => {
-                color.a = v2;
-                this.loadColorByName([colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a]);
+                // color.a = v2;
+                this.loadColorByRGBA([colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a]);
             });
-            this.loadColorByName([colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a]);
+            this.loadColorByRGBA([colorObj.color[0] / 255, colorObj.color[1] / 255, colorObj.color[2] / 255, color.a]);
         } else {
             // remove color controller
             if(this.colorController) {
