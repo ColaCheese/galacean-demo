@@ -62,6 +62,7 @@ export async function createRuntime(
 	particleList: string[],
 	lottieList: string[],
 	textureList: string[],
+	skyList: string[],
 ): Promise<void> {
 
 	// create engine
@@ -105,11 +106,13 @@ export async function createRuntime(
 	const { background } = scene;
 	const sceneFolder = gui.addFolder("背景");
 	sceneFolder.open();
-	const scenec = new Scene(engine, rootEntity, background, path, sceneFolder, guiMap);
+	const scenec = new Scene(engine, background, path, sceneFolder, guiMap);
 	scenec.loadTextureList(textureList);
-	scenec.textureSelectGui();
-	scenec.loadScene();
+	scenec.loadSkyList(skyList);
+	scenec.sceneSelectGui();
 	// scenec.loadTextureByName("Texture2D1");
+	// scenec.loadSkyByName("hdr", 1);
+	// scenec.loadColorByName([100,100,100,0.1]);
 
 	engine.run();
 }
