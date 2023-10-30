@@ -68,8 +68,8 @@ class Scene {
                 type: AssetType.Texture2D
             })
             .then((texture) => {
-                this.background.textureFillMode = fitMode;
                 this.background.texture = texture;
+                this.background.textureFillMode = fitMode;
             });
     }
 
@@ -126,12 +126,12 @@ class Scene {
             this.guiMap.texture = this.textureList[0];
             this.guiMap.fitMode = 0;
             this.textureController = this.sceneFolder.add(this.guiMap, "texture", this.textureList).name("纹理名称").onChange((v: string) => {
-                this.loadTextureByName(this.guiMap.texture, this.guiMap.fitMode);
+                this.loadTextureByName(this.guiMap.texture, parseInt(this.guiMap.fitMode));
             })
             this.fitModeController = this.sceneFolder.add(this.guiMap, "fitMode", { AspectFitWidth: 0, AspectFitHeight: 1, Fill: 2 }).name("纹理适配模式").onChange((v: number) => {
-                this.loadTextureByName(this.guiMap.texture, this.guiMap.fitMode);
+                this.loadTextureByName(this.guiMap.texture, parseInt(this.guiMap.fitMode));   
             });
-            this.loadTextureByName(this.guiMap.texture, this.guiMap.fitMode);
+            this.loadTextureByName(this.guiMap.texture, parseInt(this.guiMap.fitMode));
         } else {
             // remove texture controller
             if(this.textureController) {
