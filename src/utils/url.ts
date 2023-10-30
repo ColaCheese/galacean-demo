@@ -4,4 +4,9 @@ function getFileUrl(type: string, path: string, modelName: string, fileType: str
 }
 
 
-export { getFileUrl }
+function getSceneFileUrl(path: string, modelName: string, fileName: string, fileType: string): string {
+    return `${path}/scene/${modelName}/${fileName}.${fileType}`;
+}
+
+
+export { getFileUrl, getSceneFileUrl }
