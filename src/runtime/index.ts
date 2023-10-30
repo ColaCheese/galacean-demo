@@ -1,5 +1,6 @@
 import * as dat from "dat.gui";
 import { OrbitControl } from "@galacean/engine-toolkit-controls";
+
 import {
 	Camera,
 	Logger,
@@ -11,7 +12,7 @@ import {
 	SpineModel,
 	GltfModel,
 	Item,
-	loadScene
+	Scene,
 } from "../core";
 
 Logger.enable();
@@ -31,7 +32,9 @@ const guiMap: {
 	particle: string, // particle selector
 	lottieOn: boolean, // turn on/off lottie
 	lottie: string, // lottie selector
-	textOn: boolean // turn on/off text
+	textOn: boolean, // turn on/off text
+	texture: string, // texture selector
+	fitMode: any, // fitMode
 } = {
 	spineName: "",
 	spineSkin: "",
@@ -42,7 +45,9 @@ const guiMap: {
 	particle: "",
 	lottieOn: false,
 	lottie: "",
-	textOn: false
+	textOn: false,
+	texture: "",
+	fitMode: null,
 };
 
 // canvas: canvas id,
@@ -55,7 +60,9 @@ export async function createRuntime(
 	spineModelList: string[],
 	gltfModelList: string[],
 	particleList: string[],
-	lottieList: string[]
+	lottieList: string[],
+	textureList: string[],
+	skyList: string[],
 ): Promise<void> {
 
 	// create engine
@@ -97,7 +104,15 @@ export async function createRuntime(
 
 	// load scene
 	const { background } = scene;
-	loadScene(engine, background, gui);
+	const sceneFolder = gui.addFolder("背景");
+	sceneFolder.open();
+	const scenec = new Scene(engine, background, path, sceneFolder, guiMap);
+	scenec.loadTextureList(textureList);
+	scenec.loadSkyList(skyList);
+	scenec.sceneSelectGui();
+	// scenec.loadTextureByName("Texture2D1", 0);
+	// scenec.loadSkyByName("TextureCube", "six");
+	// scenec.loadColorByRGBA([200,120,130,0.5]);
 
 	engine.run();
 }
