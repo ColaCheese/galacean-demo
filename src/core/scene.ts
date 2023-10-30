@@ -117,7 +117,7 @@ class Scene {
     // load the color through its name
     public loadColorByRGBA(color: Array<number>): void {
         this.background.mode = BackgroundMode.SolidColor;
-        this.background.solidColor.set(color[0] / 255, color[1] / 255, color[2] / 255, color[3]);
+        this.background.solidColor.set(color[0], color[1], color[2], color[3]);
     }
 
     // initlize the texture select GUI
