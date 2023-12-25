@@ -89,13 +89,15 @@ export async function createRuntime(
 	// load gltf model
 	const gltfModelFolder = gui.addFolder("gltf模型");
 	gltfModelFolder.open();
-	const gltfModel = new GltfModel(engine, rootEntity, path, gltfModelList, gltfModelFolder, guiMap);
+	const gltfModel = new GltfModel(engine, rootEntity, path);
+	gltfModel.loadGui(gltfModelList, gltfModelFolder, guiMap);
 	gltfModel.modelSelectGui();
 
 	// load item
 	const itemFolder = gui.addFolder("元素");
 	itemFolder.open();
-	const item = new Item(engine, rootEntity, path, itemFolder, guiMap);
+	const item = new Item(engine, rootEntity, path);
+	item.loadGui(itemFolder, guiMap);
 	item.loadParticleList(particleList);
 	item.loadLottieList(lottieList);
 	item.particleSelectGui()
@@ -106,7 +108,8 @@ export async function createRuntime(
 	const { background } = scene;
 	const sceneFolder = gui.addFolder("背景");
 	sceneFolder.open();
-	const scenec = new Scene(engine, background, path, sceneFolder, guiMap);
+	const scenec = new Scene(engine, background, path);
+	scenec.loadGui(sceneFolder, guiMap);
 	scenec.loadTextureList(textureList);
 	scenec.loadSkyList(skyList);
 	scenec.sceneSelectGui();

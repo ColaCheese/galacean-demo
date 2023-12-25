@@ -31,12 +31,10 @@ class Scene {
 
     private sceneType: any;
 
-    public constructor(_engine: Engine, _background: Background, _path: string, _sceneFolder: dat.GUI, _guiMap: any) {
+    public constructor(_engine: Engine, _background: Background, _path: string) {
         this.engine = _engine;
         this.background = _background;
         this.path = _path;
-        this.sceneFolder = _sceneFolder;
-        this.guiMap = _guiMap;
         this.skyMaterial = (this.background.sky.material = new SkyBoxMaterial(this.engine)); // 添加天空盒材质
 
         // init
@@ -49,6 +47,11 @@ class Scene {
         this.colorController2 = null;
         // 1-Sky 2-texture 0-color
         this.sceneType = (this.background.mode = 2);
+    }
+
+    public loadGui(_sceneFolder: dat.GUI, _guiMap: any): void {
+        this.sceneFolder = _sceneFolder;
+        this.guiMap = _guiMap;
     }
 
     // load the list of texture

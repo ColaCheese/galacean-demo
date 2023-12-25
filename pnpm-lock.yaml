@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@galacean/effects': ^1.0.0
   '@galacean/engine': 1.0.4
   '@galacean/engine-lottie': 1.0.0
   '@galacean/engine-spine': 1.0.0-beta.1
@@ -24,6 +25,7 @@ specifiers:
   vue-tsc: ^0.29.8
 
 dependencies:
+  '@galacean/effects': 1.0.0
   '@galacean/engine': 1.0.4
   '@galacean/engine-lottie': 1.0.0_@galacean+engine@1.0.4
   '@galacean/engine-spine': 1.0.0-beta.1_@galacean+engine@1.0.4
@@ -83,6 +85,29 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@galacean/effects-core/1.0.0:
+    resolution: {integrity: sha512-yKL7tjGBp99IazQot183D/X6AMo+snzJ3UEFfjhsh87d9DuYpJzR48OqiFSnv7F1pEQCMYCe1duaU+fmzhNzEg==}
+    dependencies:
+      '@galacean/effects-specification': 1.0.0
+    dev: false
+
+  /@galacean/effects-specification/1.0.0:
+    resolution: {integrity: sha512-o9EnyCaf2lV2FqeNAS7fPTa7IenqbX6LCPiJpi2PH2ub5yDdhERqTHKClIxS+obAKXX1KwkLRHC64QAZ51K6Gg==}
+    dev: false
+
+  /@galacean/effects-webgl/1.0.0:
+    resolution: {integrity: sha512-SvKanvYEFHqcjVxA2upFE/r6trsSFE9ckxJPgKwVdnpM7NXQGOh/1IQu0WBbjabMK/oGRbtXpQN00hLjaMzUiQ==}
+    dependencies:
+      '@galacean/effects-core': 1.0.0
+    dev: false
+
+  /@galacean/effects/1.0.0:
+    resolution: {integrity: sha512-xP8ThXQ07irBudjRywC7Gy4xPXWFe2yooqjTbWh9s6H2n5OVgHyF5mNU96yVsGvd/TQxJpKEuHw47Z4UAJZKPw==}
+    dependencies:
+      '@galacean/effects-core': 1.0.0
+      '@galacean/effects-webgl': 1.0.0
+    dev: false
 
   /@galacean/engine-core/1.0.4:
     resolution: {integrity: sha512-ukRqBF++AUmdZ8rQQ0jYClQwResaKAJ87Y+sdrfGztx++nePC8RbH5yav77PIIXJs71CCVpwGjOiw/s+NRWmRw==}

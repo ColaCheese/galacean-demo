@@ -41,6 +41,7 @@
 		"release": "git push --follow-tags origin develop && npm publish"
 	},
 	"dependencies": {
+		"@galacean/effects": "^1.0.0",
 		"@galacean/engine": "1.0.4",
 		"@galacean/engine-lottie": "1.0.0",
 		"@galacean/engine-spine": "1.0.0-beta.1",

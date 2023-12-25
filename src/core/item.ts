@@ -24,7 +24,7 @@ class Item {
     private lottieController: any;
     private textEntity: Entity;
 
-    public constructor(_engine: Engine, _rootEntity: Entity, _path: string, _itemFolder: dat.GUI, _guiMap: any) {
+    public constructor(_engine: Engine, _rootEntity: Entity, _path: string) {
 
         // inilitize the model engine and root entity
         this.engine = _engine;
@@ -32,10 +32,6 @@ class Item {
 
         // the relative path of static files
         this.path = _path;
-
-        // initlize the gui
-        this.itemFolder = _itemFolder;
-        this.guiMap = _guiMap;
 
         // other initlization
         this.particleList = [];
@@ -45,6 +41,11 @@ class Item {
         this.lottieEntity  = new Entity(this.engine, undefined);
         this.lottieController = null;
         this.textEntity = new Entity(this.engine, undefined);
+    }
+      // load gui and model list
+      public loadGui(_itemFolder: dat.GUI, _guiMap: any): void {
+        this.itemFolder = _itemFolder;
+        this.guiMap = _guiMap;
     }
 
     // load the list of particle
