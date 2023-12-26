@@ -24,7 +24,8 @@ export default defineConfig({
 		emptyOutDir: false, // 是否清空目标文件夹，清空的话复制的资源文件会丢失
 		lib: {
 			entry: "src/index.ts",
-			name: "galacean-demo"
+			name: "galacean-demo",
+			formats: ["es"]
 	  	},
 		minify: "terser", // 是否禁用最小化混淆，esbuild 打包速度最快，terser 打包体积最小
         terserOptions: {  
@@ -35,25 +36,15 @@ export default defineConfig({
         },
 		rollupOptions: {
 			external: [ //忽略打包的文件
-				"@galacean/engine",
-				"@galacean/engine-spine",
-				"@galacean/engine-lottie",
-				"@galacean/engine-toolkit-controls",
-				"@types/dat.gui",
-				"dat.gui",
+				// "@galacean/engine",
+				// "@galacean/engine-spine",
+				// "@galacean/engine-lottie",
+				// "@galacean/engine-toolkit-controls",
+				// "@types/dat.gui",
+				// "dat.gui",
 				"vue",
 				// /assets/
-			],
-			output: {
-				globals: { // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-					"@galacean/engine": "galaceanEngine",
-					"@galacean/engine-spine": "galaceanEngineSpine",
-					"@galacean/engine-toolkit-controls": "galaceanEngineToolkitControls",
-					"@types/dat.gui": "typesDatGui",
-					"dat.gui": "datGui",
-					"vue": "Vue"
-				}
-			}
+			]
 		}
 	},
 	resolve: {
