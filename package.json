@@ -1,7 +1,7 @@
 {
 	"name": "galacean-demo",
 	"private": false,
-	"version": "0.2.7",
+	"version": "0.2.10",
 	"description": "The demo of galacean engine",
 	"keywords": [
 		"galacean",
@@ -41,8 +41,10 @@
 		"release": "git push --follow-tags origin develop && npm publish"
 	},
 	"dependencies": {
-		"@galacean/engine": "^1.0.4",
-		"@galacean/engine-spine": "1.0.0-beta.0",
+		"@galacean/effects": "^1.0.0",
+		"@galacean/engine": "1.0.4",
+		"@galacean/engine-lottie": "1.0.0",
+		"@galacean/engine-spine": "1.0.0-beta.1",
 		"@galacean/engine-toolkit-controls": "^1.0.0",
 		"@types/dat.gui": "^0.7.10",
 		"dat.gui": "^0.7.9",

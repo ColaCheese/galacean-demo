@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.10 (2023-10-26)
+
+
+### 🎫 Chores
+
+* **whole**: Change the rullup options to exclude engine-lottie for packaging ([439cbad](https://github.com/ColaCheese/galacean-demo/commit/439cbad))
+
+
+
+
+
+## 0.2.9 (2023-10-26)
+
+
+### 🎫 Chores
+
+* **whole**: Change the export function for building process ([d6f4e9e](https://github.com/ColaCheese/galacean-demo/commit/d6f4e9e))
+
+
+
+
+
+## 0.2.8 (2023-10-26)
+
+
+### ✨ Features
+
+* **gltf**: 1.add gltf model functions 2.change the items' position on z axis ([3619805](https://github.com/ColaCheese/galacean-demo/commit/3619805))
+* **item**: Add box and card lottie animation ([4ce3b78](https://github.com/ColaCheese/galacean-demo/commit/4ce3b78))
+* **item**: Add particle effect as a selection ([f8f0026](https://github.com/ColaCheese/galacean-demo/commit/f8f0026))
+* **whole**: 1.add text and lottie effect 2.change gui display to gui folder ([628d98c](https://github.com/ColaCheese/galacean-demo/commit/628d98c))
+
+
+### 🐛 Bug Fixes
+
+* **item**: Fix lottie effect and gui display ([b51f62e](https://github.com/ColaCheese/galacean-demo/commit/b51f62e))
+
+
+### 💄 Styles
+
+* **item**: Remove console log in item module ([daf3e42](https://github.com/ColaCheese/galacean-demo/commit/daf3e42))
+
+
+### 📝 Documentation
+
+* **whole**: Change the package homepage path ([ce33d3e](https://github.com/ColaCheese/galacean-demo/commit/ce33d3e))
+
+
+
+
+
 ## 0.2.7 (2023-10-12)
 
 

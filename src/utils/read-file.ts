@@ -1,10 +1,10 @@
-import getModelFileUrl from "./url";
+import { getFileUrl } from "./url";
 
 
 // read file according to file type, default is json
 function readFile(path: string, file: string, type: string = "json"): any {
 
-    let url = getModelFileUrl(path, file, type);
+    let url = getFileUrl("spine", path, file, type);
 
     let context = loadFile(url);
 

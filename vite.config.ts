@@ -37,6 +37,7 @@ export default defineConfig({
 			external: [ //忽略打包的文件
 				"@galacean/engine",
 				"@galacean/engine-spine",
+				"@galacean/engine-lottie",
 				"@galacean/engine-toolkit-controls",
 				"@types/dat.gui",
 				"dat.gui",

@@ -1,6 +1,7 @@
-import Model from "./model";
-import { loadScene } from "./load-scene";
-import { loadParticle } from "./load-particle";
+import SpineModel from "./spine-model";
+import GltfModel from "./gltf-model";
+import Item from "./item";
+import Scene from "./scene";
 
 
-export { Model, loadScene, loadParticle };
+export { SpineModel, GltfModel, Item, Scene };
