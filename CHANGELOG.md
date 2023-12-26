@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# 1.0.0 (2023-12-26)
+
+
+### ✨ Features
+
+* **demo**: Add demo ([4ded09c](https://github.com/ColaCheese/galacean-demo/commit/4ded09c))
+* **gltf**: 1.add gltf model functions 2.change the items' position on z axis ([3619805](https://github.com/ColaCheese/galacean-demo/commit/3619805))
+* **item**: Add box and card lottie animation ([4ce3b78](https://github.com/ColaCheese/galacean-demo/commit/4ce3b78))
+* **item**: Add particle effect as a selection ([f8f0026](https://github.com/ColaCheese/galacean-demo/commit/f8f0026))
+* **scene**: 1.add hdr setting 2.scene localization resources 3.add solidcolor 4.add new sky ([a5489e6](https://github.com/ColaCheese/galacean-demo/commit/a5489e6))
+* **scene**: Add transparency adjustment ([943412c](https://github.com/ColaCheese/galacean-demo/commit/943412c))
+* **scene**: Change class ([2c183ee](https://github.com/ColaCheese/galacean-demo/commit/2c183ee))
+* **scene**: Change function name ([c44ab26](https://github.com/ColaCheese/galacean-demo/commit/c44ab26))
+* **scene**: Getfile change ([c65fe0a](https://github.com/ColaCheese/galacean-demo/commit/c65fe0a))
+* **scene**: Modify to class ([38f4f32](https://github.com/ColaCheese/galacean-demo/commit/38f4f32))
+* **scene**: Move loadscenefile to utils ([b61307a](https://github.com/ColaCheese/galacean-demo/commit/b61307a))
+* **scene**: Move scene source to assets ([ebc9789](https://github.com/ColaCheese/galacean-demo/commit/ebc9789))
+* **scene**: Out texture ([fbf1db3](https://github.com/ColaCheese/galacean-demo/commit/fbf1db3))
+* **scene**: Texture ok ([61d866d](https://github.com/ColaCheese/galacean-demo/commit/61d866d))
+* **whole**: 1.add text and lottie effect 2.change gui display to gui folder ([628d98c](https://github.com/ColaCheese/galacean-demo/commit/628d98c))
+
+
+### 🎫 Chores
+
+* **whole**: Change the export function for building process ([d6f4e9e](https://github.com/ColaCheese/galacean-demo/commit/d6f4e9e))
+* **whole**: Change the rullup options to exclude engine-lottie for packaging ([439cbad](https://github.com/ColaCheese/galacean-demo/commit/439cbad))
+
+
+### 🐛 Bug Fixes
+
+* **item**: Fix lottie effect and gui display ([b51f62e](https://github.com/ColaCheese/galacean-demo/commit/b51f62e))
+* **scene**: Fix color of scene ([60213a8](https://github.com/ColaCheese/galacean-demo/commit/60213a8))
+* **scene**: Fix the problem of texture can not change ([0ad9db9](https://github.com/ColaCheese/galacean-demo/commit/0ad9db9))
+
+
+### 💄 Styles
+
+* **item**: Remove console log in item module ([daf3e42](https://github.com/ColaCheese/galacean-demo/commit/daf3e42))
+
+
+### 📝 Documentation
+
+* **whole**: Change the package homepage path ([ce33d3e](https://github.com/ColaCheese/galacean-demo/commit/ce33d3e))
+
+
+
+
+
 ## 0.2.10 (2023-10-26)
 
 
